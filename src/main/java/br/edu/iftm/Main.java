@@ -1,8 +1,11 @@
 package br.edu.iftm;
 
+import br.edu.iftm.presentation.menus.MainMenu;
+
 public class Main {
     public static void main(String[] args) {
-        Application application = new Application();
-        application.run();
+        MainMenu menu = new MainMenu();
+        menu.handle(1);
+        menu.handle(2);
     }
 }

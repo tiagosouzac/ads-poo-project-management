@@ -1,4 +1,4 @@
-package br.edu.iftm.repositories;
+package br.edu.iftm.repositories.projects;
 
 public class ListProjectsRepository {
     public void list() {

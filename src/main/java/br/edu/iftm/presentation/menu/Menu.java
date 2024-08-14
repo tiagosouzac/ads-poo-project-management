@@ -3,6 +3,8 @@ package br.edu.iftm.presentation.menu;
 import java.util.HashMap;
 import java.util.Map;
 
+import br.edu.iftm.actions.Action;
+
 public class Menu {
     private Map<Integer, MenuOption> options;
 
@@ -10,7 +12,7 @@ public class Menu {
         this.options = new HashMap<Integer, MenuOption>();
     }
 
-    public void addOption(String name, MenuAction action) {
+    public void addOption(String name, Action action) {
         int key = this.options.size() + 1;
         MenuOption option = new MenuOption(name, action);
         this.options.put(key, option);

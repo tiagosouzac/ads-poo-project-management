@@ -1,10 +1,12 @@
 package br.edu.iftm.presentation.menu;
 
+import br.edu.iftm.actions.Action;
+
 public class MenuOption {
     private String name;
-    private MenuAction action;
+    private Action action;
 
-    public MenuOption(String name, MenuAction action) {
+    public MenuOption(String name, Action action) {
         this.name = name;
         this.action = action;
     }
