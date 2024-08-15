@@ -11,6 +11,10 @@ public class MenuOption {
         this.action = action;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public void execute() {
         this.action.execute();
     }

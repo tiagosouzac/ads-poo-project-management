@@ -18,6 +18,12 @@ public class Menu {
         this.options.put(key, option);
     }
 
+    public void show() {
+        this.options.forEach((key, action) -> {
+            System.out.println(key + ". " + action.getName());
+        });
+    }
+
     public void handle(int optionKey) {
         MenuOption option = this.options.get(optionKey);
 
