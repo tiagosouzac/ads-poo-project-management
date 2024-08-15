@@ -1,0 +1,28 @@
+package br.edu.iftm.utils;
+
+public class Scanner {
+    private java.util.Scanner scanner;
+
+    public Scanner() {
+        this.scanner = new java.util.Scanner(System.in);
+    }
+
+    public String read() {
+        try {
+            return this.scanner.nextLine();
+        } catch (Exception e) {
+            System.out.println("Valor inválido, digite novamente");
+            return this.read();
+        }
+    }
+
+    public int readInt() {
+        try {
+            String value = this.read();
+            return Integer.parseInt(value);
+        } catch (Exception e) {
+            System.out.println("Valor inválido, insira um número");
+            return this.readInt();
+        }
+    }
+}
