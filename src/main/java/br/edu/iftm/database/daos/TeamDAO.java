@@ -1,6 +1,6 @@
 package br.edu.iftm.database.daos;
 
-public class Team {
+public class TeamDAO {
     public void create() {
     }
 

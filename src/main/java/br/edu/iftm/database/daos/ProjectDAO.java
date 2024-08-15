@@ -1,6 +1,6 @@
 package br.edu.iftm.database.daos;
 
-public class Project {
+public class ProjectDAO {
     public void create() {
     }
 
