@@ -1,4 +1,4 @@
-package br.edu.iftm.daos;
+package br.edu.iftm.database.daos;
 
 public class Team {
     public void create() {
