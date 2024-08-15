@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import br.edu.iftm.actions.Action;
+import br.edu.iftm.utils.Scanner;
 
 public class Menu {
     private Map<Integer, MenuOption> options;
@@ -18,13 +19,13 @@ public class Menu {
         this.options.put(key, option);
     }
 
-    public void show() {
+    private void listOptions() {
         this.options.forEach((key, action) -> {
             System.out.println(key + ". " + action.getName());
         });
     }
 
-    public void handle(int optionKey) {
+    private void handle(int optionKey) {
         MenuOption option = this.options.get(optionKey);
 
         if (option == null) {
@@ -36,6 +37,21 @@ public class Menu {
             option.execute();
         } catch (Exception e) {
             System.out.println("Erro ao executar a ação: " + e.getMessage());
+        }
+    }
+
+    protected void askOption() {
+        Scanner scanner = new Scanner();
+
+        while (true) {
+            this.listOptions();
+
+            int selectedOption = scanner.readInt();
+            this.handle(selectedOption);
+
+            if (this.options.containsKey(selectedOption)) {
+                break;
+            }
         }
     }
 }

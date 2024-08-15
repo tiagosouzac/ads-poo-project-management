@@ -10,9 +10,10 @@ public class MainMenu extends Menu {
         this.addOption("Listar todos as equipes", new ListTeamsAction());
     }
 
-    @Override
-    public void show() {
-        System.out.println("Bem vindo!");
-        super.show();
+    public void display() {
+        System.out.println("Bem vindo! O que deseja fazer?");
+        System.out.println();
+
+        super.askOption();
     }
 }
