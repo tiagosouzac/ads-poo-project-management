@@ -25,7 +25,14 @@ public class ProjectDAO {
     public void update() {
     }
 
-    public void delete() {
+    public boolean delete(int id) throws Exception {
+        boolean removed = ProjectDAO.fakeProjects.removeIf((project) -> project.getId() == id);
+
+        if (removed) {
+            return removed;
+        } else {
+            throw new Exception("Projeto não encontrado!");
+        }
     }
 
     public List<ProjectModel> list() {
