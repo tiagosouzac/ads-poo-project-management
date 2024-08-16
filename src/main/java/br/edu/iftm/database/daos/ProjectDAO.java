@@ -15,7 +15,11 @@ public class ProjectDAO {
         }
     };
 
-    public void create() {
+    public ProjectModel store(String name, String description) {
+        int id = ProjectDAO.fakeProjects.size() + 1;
+        ProjectModel project = new ProjectModel(id, name, description);
+        ProjectDAO.fakeProjects.add(project);
+        return project;
     }
 
     public void update() {

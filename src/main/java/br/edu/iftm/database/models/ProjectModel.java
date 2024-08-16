@@ -17,6 +17,12 @@ public class ProjectModel {
     private Date startDate;
     private Date endDate;
 
+    public ProjectModel(String name, String description) {
+        this.name = name;
+        this.description = description;
+        this.status = Status.PENDING;
+    }
+
     public ProjectModel(int id, String name, String description) {
         this.id = id;
         this.name = name;
@@ -57,5 +63,10 @@ public class ProjectModel {
 
     public Date getEndDate() {
         return this.endDate;
+    }
+
+    @Override
+    public String toString() {
+        return this.id + ". " + this.name + " - " + this.description + " - " + this.status;
     }
 }

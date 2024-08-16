@@ -1,5 +1,6 @@
 package br.edu.iftm.presentation.menus;
 
+import br.edu.iftm.actions.projects.CreateProjectAction;
 import br.edu.iftm.actions.projects.ListFinishedProjectsAction;
 import br.edu.iftm.actions.projects.ListInProgressProjectsAction;
 import br.edu.iftm.actions.projects.ListPendingProjectsAction;
@@ -12,6 +13,7 @@ public class MainMenu extends Menu {
         this.addOption("Listar os projetos pendentes", new ListPendingProjectsAction());
         this.addOption("Listar os projetos em andamento", new ListInProgressProjectsAction());
         this.addOption("Listar os projetos concluídos", new ListFinishedProjectsAction());
+        this.addOption("Criar um projeto", new CreateProjectAction());
     }
 
     public void display() {
