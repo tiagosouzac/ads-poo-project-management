@@ -4,12 +4,13 @@ import java.util.List;
 
 import br.edu.iftm.actions.Action;
 import br.edu.iftm.database.models.ProjectModel;
+import br.edu.iftm.database.models.ProjectModel.Status;
 import br.edu.iftm.database.repositories.projects.ListProjectsRepository;
 
-public class ListProjectsAction implements Action {
+public class ListPendingProjectsAction implements Action {
     public void execute() {
         ListProjectsRepository repository = new ListProjectsRepository();
-        List<ProjectModel> projects = repository.list();
+        List<ProjectModel> projects = repository.list(Status.PENDING);
 
         for (ProjectModel project : projects) {
             System.out.println(project.getId() + ". " + project.getName() + " - " + project.getStatus());
