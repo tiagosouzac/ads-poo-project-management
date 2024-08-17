@@ -3,6 +3,7 @@ package br.edu.iftm.actions.projects;
 import br.edu.iftm.actions.Action;
 import br.edu.iftm.database.models.ProjectModel;
 import br.edu.iftm.database.repositories.projects.FindProjectRepository;
+import br.edu.iftm.presentation.menus.ProjectDetailsMenu;
 import br.edu.iftm.utils.Scanner;
 
 public class ProjectDetailsAction implements Action {
@@ -26,6 +27,9 @@ public class ProjectDetailsAction implements Action {
             if (project.getEndDate() != null) {
                 System.out.println("Finalizado em: " + project.getEndDate());
             }
+
+            ProjectDetailsMenu menu = new ProjectDetailsMenu(project);
+            menu.display();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
