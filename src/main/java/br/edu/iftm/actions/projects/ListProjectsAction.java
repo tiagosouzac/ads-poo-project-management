@@ -12,11 +12,15 @@ public class ListProjectsAction implements Action {
         ListProjectsRepository repository = new ListProjectsRepository();
         List<ProjectModel> projects = repository.list();
 
-        for (ProjectModel project : projects) {
-            System.out.println(project.getId() + ". " + project.getName() + " - " + project.getStatus());
-        }
+        if (!projects.isEmpty()) {
+            for (ProjectModel project : projects) {
+                System.out.println(project.getId() + ". " + project.getName() + " - " + project.getStatus());
+            }
 
-        ListProjectsMenu menu = new ListProjectsMenu();
-        menu.display();
+            ListProjectsMenu menu = new ListProjectsMenu();
+            menu.display();
+        } else {
+            System.out.println("Nenhum projeto cadastrado ainda!");
+        }
     }
 }

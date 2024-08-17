@@ -12,8 +12,12 @@ public class ListInProgressProjectsAction implements Action {
         ListProjectsRepository repository = new ListProjectsRepository();
         List<ProjectModel> projects = repository.list(Status.IN_PROGRESS);
 
-        for (ProjectModel project : projects) {
-            System.out.println(project.getId() + ". " + project.getName() + " - " + project.getStatus());
+        if (!projects.isEmpty()) {
+            for (ProjectModel project : projects) {
+                System.out.println(project.getId() + ". " + project.getName() + " - " + project.getStatus());
+            }
+        } else {
+            System.out.println("Nenhum projeto em andamento!");
         }
     }
 }
