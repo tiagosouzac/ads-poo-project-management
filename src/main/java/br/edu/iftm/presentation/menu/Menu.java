@@ -2,7 +2,6 @@ package br.edu.iftm.presentation.menu;
 
 import java.util.HashMap;
 import java.util.Map;
-
 import br.edu.iftm.actions.Action;
 import br.edu.iftm.utils.Scanner;
 
@@ -13,73 +12,91 @@ public class Menu {
         this.options = new HashMap<Integer, MenuOption>();
     }
 
-    public void addOption(String name, Action action) {
+    private void add(int key, String name, Action action, boolean shouldCloseMenu) {
+        MenuOption option = new MenuOption(name, action, shouldCloseMenu);
+        this.options.put(key, option);
+    }
+
+    private void add(String name, Action action, boolean shouldCloseMenu) {
         int key = this.options.size() + 1;
-        MenuOption option = new MenuOption(name, action);
-        this.options.put(key, option);
+        this.add(key, name, action, shouldCloseMenu);
     }
 
-    public void addOption(int key, String name, Action action) {
-        MenuOption option = new MenuOption(name, action);
-        this.options.put(key, option);
+    protected void addOption(String name, Action action) {
+        this.add(name, action, false);
     }
 
-    public void addCloseOption(String name) {
-        this.addOption(0, name, () -> {
-        });
+    protected void addOption(int key, String name, Action action) {
+        this.add(key, name, action, false);
+    }
+
+    protected void addCloseOption(String name) {
+        this.add(name, () -> {
+        }, true);
+    }
+
+    protected void addCloseOption(String name, Action action) {
+        this.add(name, action, true);
+    }
+
+    protected void addCloseOption(int key, String name, Action action) {
+        this.add(key, name, action, true);
     }
 
     private void listOptions() {
-        this.options.forEach((key, action) -> {
-            System.out.println(key + ". " + action.getName());
+        System.out.println();
+
+        this.options.forEach((key, option) -> {
+            System.out.println(key + ". " + option.getName());
         });
     }
 
-    private void handle(int optionKey) {
-        MenuOption option = this.options.get(optionKey);
+    private boolean askOption() {
+        Scanner scanner = new Scanner();
+
+        int selectedOption;
+        boolean shouldCloseMenu = false;
+
+        do {
+            this.listOptions();
+
+            selectedOption = scanner.readInt();
+
+            this.clearConsole();
+
+            shouldCloseMenu = this.handle(selectedOption);
+        } while (!this.options.containsKey(selectedOption));
+
+        return shouldCloseMenu;
+    }
+
+    private boolean handle(int selectedOption) {
+        MenuOption option = this.options.get(selectedOption);
 
         if (option == null) {
             System.out.println("Opção inválida!");
-            return;
+            return false;
         }
 
         try {
             option.execute();
         } catch (Exception e) {
-            System.out.println("Erro ao executar a ação: " + e.getMessage());
+            System.out.println("Não foi possível executar a opção \"" + option.getName() + "\"");
         }
+
+        return option.getShouldCloseMenu();
     }
 
-    private int askOption() {
-        Scanner scanner = new Scanner();
-        int selectedOption;
+    public void display() {
+        boolean shouldCloseMenu = false;
 
-        while (true) {
-            System.out.println();
-            this.listOptions();
-
-            selectedOption = scanner.readInt();
-            this.clearConsole();
-            this.handle(selectedOption);
-
-            if (this.options.containsKey(selectedOption)) {
-                break;
-            }
-        }
-
-        return selectedOption;
+        do {
+            shouldCloseMenu = this.askOption();
+        } while (!shouldCloseMenu);
     }
 
     private void clearConsole() {
         System.out.print("\033[H\033[2J");
         System.out.flush();
-    }
-
-    public void display() {
-        int selectedOption;
-
-        do {
-            selectedOption = this.askOption();
-        } while (selectedOption != 0);
     }
 }
