@@ -19,6 +19,16 @@ public class Menu {
         this.options.put(key, option);
     }
 
+    public void addOption(int key, String name, Action action) {
+        MenuOption option = new MenuOption(name, action);
+        this.options.put(key, option);
+    }
+
+    public void addCloseOption(String name) {
+        this.addOption(0, name, () -> {
+        });
+    }
+
     private void listOptions() {
         this.options.forEach((key, action) -> {
             System.out.println(key + ". " + action.getName());
@@ -40,18 +50,36 @@ public class Menu {
         }
     }
 
-    protected void askOption() {
+    private int askOption() {
         Scanner scanner = new Scanner();
+        int selectedOption;
 
         while (true) {
+            System.out.println();
             this.listOptions();
 
-            int selectedOption = scanner.readInt();
+            selectedOption = scanner.readInt();
+            this.clearConsole();
             this.handle(selectedOption);
 
             if (this.options.containsKey(selectedOption)) {
                 break;
             }
         }
+
+        return selectedOption;
+    }
+
+    private void clearConsole() {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+    }
+
+    public void display() {
+        int selectedOption;
+
+        do {
+            selectedOption = this.askOption();
+        } while (selectedOption != 0);
     }
 }

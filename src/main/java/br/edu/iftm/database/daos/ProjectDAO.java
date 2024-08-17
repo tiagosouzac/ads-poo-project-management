@@ -42,7 +42,7 @@ public class ProjectDAO {
     public List<ProjectModel> list(Status status) {
         List<ProjectModel> projects = new ArrayList<>();
 
-        for (ProjectModel project : projects) {
+        for (ProjectModel project : ProjectDAO.fakeProjects) {
             if (project.getStatus() == status) {
                 projects.add(project);
             }
