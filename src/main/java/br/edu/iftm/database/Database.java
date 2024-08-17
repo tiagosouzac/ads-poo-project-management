@@ -24,12 +24,24 @@ public class Database {
         }
     }
 
+    public boolean query(String sql, Object... params) {
+        try (PreparedStatement statement = this.connection.prepareStatement(sql)) {
+            for (int i = 0; i < params.length; i++) {
+                statement.setObject(i + 1, params[i]);
+            }
+
+            return !statement.execute();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public <T> List<T> query(String sql, Function<ResultSet, T> transformer, Object... params) {
         List<T> items = new ArrayList<>();
 
         try (PreparedStatement statement = this.connection.prepareStatement(sql)) {
-            for (int i = 1; i < params.length; i++) {
-                statement.setObject(i, params[i]);
+            for (int i = 0; i < params.length; i++) {
+                statement.setObject(i + 1, params[i]);
             }
 
             try (ResultSet results = statement.executeQuery()) {
