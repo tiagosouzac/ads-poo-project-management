@@ -1,19 +1,19 @@
 package br.edu.iftm.actions.projects;
 
 import br.edu.iftm.actions.Action;
-import br.edu.iftm.database.repositories.projects.CreateProjectRepository;
+import br.edu.iftm.database.daos.ProjectDAO;
 import br.edu.iftm.utils.Scanner;
 import br.edu.iftm.utils.Validator;
 
 public class CreateProjectAction implements Action {
-    private final CreateProjectRepository repository = new CreateProjectRepository();
+    private final ProjectDAO dao = new ProjectDAO();
     private final Scanner scanner = new Scanner();
 
     public void execute() {
         String name = this.askProjectName();
         String description = this.askProjectDescription();
 
-        this.repository.create(name, description);
+        this.dao.store(name, description);
     }
 
     private String askProjectName() {

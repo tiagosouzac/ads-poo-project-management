@@ -1,16 +1,14 @@
 package br.edu.iftm.actions.projects;
 
 import br.edu.iftm.actions.Action;
+import br.edu.iftm.database.daos.ProjectDAO;
 import br.edu.iftm.database.models.ProjectModel;
 import br.edu.iftm.database.models.ProjectModel.Status;
-import br.edu.iftm.database.repositories.projects.FindProjectRepository;
-import br.edu.iftm.database.repositories.projects.UpdateProjectRepository;
 import br.edu.iftm.utils.Scanner;
 import br.edu.iftm.utils.Validator;
 
 public class UpdateProjectAction implements Action {
-    private final UpdateProjectRepository updateRepository = new UpdateProjectRepository();
-    private final FindProjectRepository findRepository = new FindProjectRepository();
+    private final ProjectDAO dao = new ProjectDAO();
     private final Scanner scanner = new Scanner();
     private ProjectModel project;
 
@@ -20,7 +18,7 @@ public class UpdateProjectAction implements Action {
 
     public void execute() {
         try {
-            ProjectModel existingProject = this.findRepository.find(this.project.getId());
+            ProjectModel existingProject = this.dao.find(this.project.getId());
 
             String name = existingProject.getName();
             String description = existingProject.getDescription();
@@ -32,7 +30,7 @@ public class UpdateProjectAction implements Action {
 
             ProjectModel updatedProject = new ProjectModel(this.project.getId(), name, description, status);
 
-            this.updateRepository.update(updatedProject);
+            this.dao.update(updatedProject);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

@@ -1,20 +1,20 @@
 package br.edu.iftm.actions.projects;
 
 import br.edu.iftm.actions.Action;
+import br.edu.iftm.database.daos.ProjectDAO;
 import br.edu.iftm.database.models.ProjectModel;
-import br.edu.iftm.database.repositories.projects.FindProjectRepository;
 import br.edu.iftm.presentation.menus.ProjectDetailsMenu;
 import br.edu.iftm.utils.Scanner;
 
 public class ProjectDetailsAction implements Action {
-    private final FindProjectRepository repository = new FindProjectRepository();
+    private final ProjectDAO dao = new ProjectDAO();
     private final Scanner scanner = new Scanner();
 
     public void execute() {
         try {
             int projectId = this.askProjectId(scanner);
 
-            ProjectModel project = repository.find(projectId);
+            ProjectModel project = dao.find(projectId);
 
             this.displayProjectInfo(project);
 

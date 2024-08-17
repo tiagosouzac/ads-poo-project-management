@@ -3,15 +3,15 @@ package br.edu.iftm.actions.projects;
 import java.util.List;
 
 import br.edu.iftm.actions.Action;
+import br.edu.iftm.database.daos.ProjectDAO;
 import br.edu.iftm.database.models.ProjectModel;
 import br.edu.iftm.database.models.ProjectModel.Status;
-import br.edu.iftm.database.repositories.projects.ListProjectsRepository;
 
 public class ListPendingProjectsAction implements Action {
-    private final ListProjectsRepository repository = new ListProjectsRepository();
+    private final ProjectDAO dao = new ProjectDAO();
 
     public void execute() {
-        List<ProjectModel> projects = this.repository.list(Status.PENDING);
+        List<ProjectModel> projects = this.dao.list(Status.PENDING);
 
         if (!projects.isEmpty()) {
             for (ProjectModel project : projects) {
