@@ -8,9 +8,10 @@ import br.edu.iftm.database.models.ProjectModel.Status;
 import br.edu.iftm.database.repositories.projects.ListProjectsRepository;
 
 public class ListPendingProjectsAction implements Action {
+    private final ListProjectsRepository repository = new ListProjectsRepository();
+
     public void execute() {
-        ListProjectsRepository repository = new ListProjectsRepository();
-        List<ProjectModel> projects = repository.list(Status.PENDING);
+        List<ProjectModel> projects = this.repository.list(Status.PENDING);
 
         if (!projects.isEmpty()) {
             for (ProjectModel project : projects) {

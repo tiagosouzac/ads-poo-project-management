@@ -5,17 +5,16 @@ import br.edu.iftm.database.models.ProjectModel;
 import br.edu.iftm.database.repositories.projects.DeleteProjectRepository;
 
 public class DeleteProjectAction implements Action {
-    private ProjectModel project;
+    private final DeleteProjectRepository repository = new DeleteProjectRepository();
+    private final ProjectModel project;
 
     public DeleteProjectAction(ProjectModel project) {
         this.project = project;
     }
 
     public void execute() {
-        DeleteProjectRepository repository = new DeleteProjectRepository();
-
         try {
-            repository.delete(project.getId());
+            this.repository.delete(project.getId());
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

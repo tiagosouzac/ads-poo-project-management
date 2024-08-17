@@ -6,22 +6,22 @@ import br.edu.iftm.utils.Scanner;
 import br.edu.iftm.utils.Validator;
 
 public class CreateProjectAction implements Action {
+    private final CreateProjectRepository repository = new CreateProjectRepository();
+    private final Scanner scanner = new Scanner();
+
     public void execute() {
-        CreateProjectRepository repository = new CreateProjectRepository();
-        Scanner scanner = new Scanner();
+        String name = this.askProjectName();
+        String description = this.askProjectDescription();
 
-        String name = this.askProjectName(scanner);
-        String description = this.askProjectDescription(scanner);
-
-        repository.create(name, description);
+        this.repository.create(name, description);
     }
 
-    private String askProjectName(Scanner scanner) {
+    private String askProjectName() {
         String name;
 
         do {
             System.out.print("Nome do projeto: ");
-            name = scanner.read().trim();
+            name = this.scanner.read().trim();
 
             if (!Validator.project.isValidName(name)) {
                 System.out.println("Nome é obrigatório!");
@@ -31,12 +31,12 @@ public class CreateProjectAction implements Action {
         return name;
     }
 
-    private String askProjectDescription(Scanner scanner) {
+    private String askProjectDescription() {
         String description;
 
         do {
             System.out.print("Descrição do projeto: ");
-            description = scanner.read().trim();
+            description = this.scanner.read().trim();
 
             if (!Validator.project.isValidDescription(description)) {
                 System.out.println("A descrição deve ter no máximo 255 caracteres!");

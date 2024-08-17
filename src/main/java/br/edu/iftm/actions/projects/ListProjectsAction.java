@@ -8,9 +8,10 @@ import br.edu.iftm.database.repositories.projects.ListProjectsRepository;
 import br.edu.iftm.presentation.menus.ListProjectsMenu;
 
 public class ListProjectsAction implements Action {
+    private final ListProjectsRepository repository = new ListProjectsRepository();
+
     public void execute() {
-        ListProjectsRepository repository = new ListProjectsRepository();
-        List<ProjectModel> projects = repository.list();
+        List<ProjectModel> projects = this.repository.list();
 
         if (!projects.isEmpty()) {
             for (ProjectModel project : projects) {

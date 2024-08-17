@@ -16,6 +16,15 @@ public class Scanner {
         }
     }
 
+    public char readChar() {
+        try {
+            return this.scanner.nextLine().charAt(0);
+        } catch (Exception e) {
+            System.out.println("Valor inválido, digite novamente");
+            return this.readChar();
+        }
+    }
+
     public int readInt() {
         try {
             String value = this.read();
