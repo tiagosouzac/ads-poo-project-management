@@ -3,7 +3,6 @@ package br.edu.iftm.utils;
 public class Validator {
     public static class string {
         public static boolean isEmpty(String value) {
-            System.out.println(value != null);
             return value.trim().isEmpty();
         }
 
@@ -17,6 +16,16 @@ public class Validator {
 
         public static boolean isValid(String value, int minLength, int maxLength) {
             return !isEmpty(value) && minLength(value, minLength) && maxLength(value, maxLength);
+        }
+    }
+
+    public static class project {
+        public static boolean isValidName(String name) {
+            return Validator.string.isValid(name, 1, 255);
+        }
+
+        public static boolean isValidDescription(String description) {
+            return Validator.string.maxLength(description, 255);
         }
     }
 }

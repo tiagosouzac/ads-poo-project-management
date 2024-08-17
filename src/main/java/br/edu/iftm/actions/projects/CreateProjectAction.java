@@ -23,16 +23,12 @@ public class CreateProjectAction implements Action {
             System.out.print("Nome do projeto: ");
             name = scanner.read().trim();
 
-            if (!this.isValidName(name)) {
+            if (!Validator.project.isValidName(name)) {
                 System.out.println("Nome é obrigatório!");
             }
-        } while (!this.isValidName(name));
+        } while (!Validator.project.isValidName(name));
 
         return name;
-    }
-
-    private boolean isValidName(String name) {
-        return Validator.string.isValid(name, 1, 255);
     }
 
     private String askProjectDescription(Scanner scanner) {
@@ -42,15 +38,11 @@ public class CreateProjectAction implements Action {
             System.out.print("Descrição do projeto: ");
             description = scanner.read().trim();
 
-            if (!this.isValidDescription(description)) {
-                System.out.println("Descrição deve ter no máximo 255 caracteres!");
+            if (!Validator.project.isValidDescription(description)) {
+                System.out.println("A descrição deve ter no máximo 255 caracteres!");
             }
-        } while (!this.isValidDescription(description));
+        } while (!Validator.project.isValidDescription(description));
 
         return description;
-    }
-
-    private boolean isValidDescription(String description) {
-        return Validator.string.maxLength(description, 255);
     }
 }

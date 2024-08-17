@@ -22,7 +22,15 @@ public class ProjectDAO {
         return project;
     }
 
-    public void update() {
+    public ProjectModel update(ProjectModel project) throws Exception {
+        try {
+            ProjectModel oldProject = this.find(project.getId());
+            int index = ProjectDAO.fakeProjects.indexOf(oldProject);
+            ProjectDAO.fakeProjects.set(index, project);
+            return project;
+        } catch (Exception e) {
+            throw e;
+        }
     }
 
     public boolean delete(int id) throws Exception {
