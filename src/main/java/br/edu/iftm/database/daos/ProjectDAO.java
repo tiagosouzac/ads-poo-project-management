@@ -51,6 +51,19 @@ public class ProjectDAO {
         return projects;
     }
 
-    public void find() {
+    public ProjectModel find(int id) throws Exception {
+        ProjectModel project = null;
+
+        for (ProjectModel p : ProjectDAO.fakeProjects) {
+            if (p.getId() == id) {
+                project = p;
+            }
+        }
+
+        if (project == null) {
+            throw new Exception("Projeto não encontrado!");
+        }
+
+        return project;
     }
 }

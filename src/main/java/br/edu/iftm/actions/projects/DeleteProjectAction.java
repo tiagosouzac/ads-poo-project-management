@@ -9,10 +9,10 @@ public class DeleteProjectAction implements Action {
         Scanner scanner = new Scanner();
         DeleteProjectRepository repository = new DeleteProjectRepository();
 
-        int id = this.askProjectId(scanner);
+        int projectId = this.askProjectId(scanner);
 
         try {
-            repository.delete(id);
+            repository.delete(projectId);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
