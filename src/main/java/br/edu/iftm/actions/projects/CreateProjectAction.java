@@ -1,5 +1,7 @@
 package br.edu.iftm.actions.projects;
 
+import java.util.Date;
+
 import br.edu.iftm.actions.Action;
 import br.edu.iftm.database.daos.ProjectDAO;
 import br.edu.iftm.utils.Scanner;
@@ -12,8 +14,16 @@ public class CreateProjectAction implements Action {
     public void execute() {
         String name = this.askProjectName();
         String description = this.askProjectDescription();
+        Date startAt = this.askProjectStartDate();
+        Date endAt = this.askProjectEndDate(startAt);
 
-        this.dao.store(name, description, null, null);
+        try {
+            if (this.dao.store(name, description, startAt, endAt)) {
+                System.out.println("Projeto criado com sucesso!");
+            }
+        } catch (Exception e) {
+            System.out.println("Não foi possível criar o projeto. Erro: " + e.getMessage());
+        }
     }
 
     private String askProjectName() {
@@ -44,5 +54,32 @@ public class CreateProjectAction implements Action {
         } while (!Validator.project.isValidDescription(description));
 
         return description;
+    }
+
+    private Date askProjectStartDate() {
+        Date startAt = null;
+
+        do {
+            System.out.println("Data de início: ");
+            startAt = this.scanner.readDate();
+        } while (startAt == null);
+
+        return startAt;
+    }
+
+    private Date askProjectEndDate(Date starAt) {
+        Date endAt = null;
+
+        do {
+            System.out.println("Data de finalização: ");
+            endAt = this.scanner.readDate();
+
+            if (endAt.before(starAt)) {
+                System.out.println("A finalização deve ser posterior ao início do projeto!");
+                endAt = null;
+            }
+        } while (endAt == null);
+
+        return endAt;
     }
 }

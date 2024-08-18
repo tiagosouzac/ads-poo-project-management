@@ -1,5 +1,8 @@
 package br.edu.iftm.utils;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Scanner {
     private java.util.Scanner scanner;
 
@@ -32,6 +35,18 @@ public class Scanner {
         } catch (Exception e) {
             System.out.println("Valor inválido, insira um número");
             return this.readInt();
+        }
+    }
+
+    public Date readDate() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+
+        try {
+            String value = this.read();
+            return dateFormat.parse(value);
+        } catch (Exception e) {
+            System.out.println("Formato de data inválido. Insira a data no formato dd/mm/yyyy.");
+            return this.readDate();
         }
     }
 }

@@ -15,12 +15,10 @@ public class ProjectDAO {
         this.database = new Database();
     }
 
-    public ProjectModel store(String name, String description, Date start_at, Date end_at) {
+    public boolean store(String name, String description, Date start_at, Date end_at) {
         String sql = "INSERT INTO projects(name, description, start_at, end_at) VALUES (?, ?, ?, ?)";
 
-        return this.database
-                .query(sql, ProjectMapper.map(), name, description, start_at, end_at)
-                .get(0);
+        return this.database.query(sql, name, description, start_at, end_at);
     }
 
     public ProjectModel update(ProjectModel project) throws Exception {
