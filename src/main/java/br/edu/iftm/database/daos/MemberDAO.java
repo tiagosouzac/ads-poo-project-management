@@ -32,10 +32,10 @@ public class MemberDAO {
         return this.database.query(sql, id);
     }
 
-    public List<MemberModel> list() {
-        String sql = "SELECT * FROM members;";
+    public List<MemberModel> list(int teamId) {
+        String sql = "SELECT * FROM members WHERE team_id = ?;";
 
-        return this.database.query(sql, MemberMapper.map());
+        return this.database.query(sql, MemberMapper.map(), teamId);
     }
 
     public MemberModel find(int id) {
