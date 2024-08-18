@@ -1,5 +1,7 @@
 package br.edu.iftm.actions.projects;
 
+import java.util.Date;
+
 import br.edu.iftm.actions.Action;
 import br.edu.iftm.database.daos.ProjectDAO;
 import br.edu.iftm.database.models.ProjectModel;
@@ -20,20 +22,18 @@ public class UpdateProjectAction implements Action {
         try {
             ProjectModel existingProject = this.dao.find(this.project.getId());
 
-            String name = existingProject.getName();
-            String description = existingProject.getDescription();
-            Status status = existingProject.getStatus();
+            int id = existingProject.getId();
+            String name = this.askProjectName(existingProject.getName());
+            String description = this.askProjectDescription(existingProject.getDescription());
+            Status status = this.askProjectStatus(existingProject.getStatus());
+            Date startAt = this.askProjectStartDate(existingProject.getStartDate());
+            Date endAt = this.askProjectEndDate(existingProject.getEndDate(), startAt);
 
-            name = this.askProjectName(name);
-            description = this.askProjectDescription(description);
-            status = this.askProjectStatus(status);
-
-            // ProjectModel updatedProject = new ProjectModel(this.project.getId(), name,
-            // description, status);
-
-            // this.dao.update(updatedProject);
+            if (this.dao.update(id, name, description, status, startAt, endAt)) {
+                System.out.println("Projeto atualizado com sucesso!");
+            }
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            System.out.println("Não foi possível atualizar o projeto. Erro: " + e.getMessage());
         }
     }
 
@@ -118,5 +118,52 @@ public class UpdateProjectAction implements Action {
         } while (status == null);
 
         return status;
+    }
+
+    private Date askProjectStartDate(Date currentStartDate) {
+        Date startAt = null;
+
+        System.out.println("Data de início: " + currentStartDate);
+        System.out.println("Deseja alterar essa data? (s/n)");
+
+        char changeStatus = this.scanner.readChar();
+
+        if (changeStatus == 'n') {
+            return currentStartDate;
+        }
+
+        do {
+            System.out.println("Nova data de início: ");
+            startAt = this.scanner.readDate();
+        } while (startAt == null);
+
+        return startAt;
+    }
+
+    private Date askProjectEndDate(Date currentEndDate, Date starAt) {
+        Date endAt = null;
+
+        if (currentEndDate.after(starAt)) {
+            System.out.println("Data de finalização: " + currentEndDate);
+            System.out.println("Deseja alterar essa data? (s/n)");
+
+            char changeStatus = this.scanner.readChar();
+
+            if (changeStatus == 'n') {
+                return currentEndDate;
+            }
+        }
+
+        do {
+            System.out.println("Nova data de finalização: ");
+            endAt = this.scanner.readDate();
+
+            if (endAt.before(starAt)) {
+                System.out.println("A finalização deve ser posterior ao início do projeto!");
+                endAt = null;
+            }
+        } while (endAt == null);
+
+        return endAt;
     }
 }

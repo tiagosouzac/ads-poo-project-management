@@ -15,20 +15,17 @@ public class ProjectDAO {
         this.database = new Database();
     }
 
-    public boolean store(String name, String description, Date start_at, Date end_at) {
+    public boolean store(String name, String description, Date startAt, Date endAt) {
         String sql = "INSERT INTO projects(name, description, start_at, end_at) VALUES (?, ?, ?, ?)";
 
-        return this.database.query(sql, name, description, start_at, end_at);
+        return this.database.query(sql, name, description, startAt, endAt);
     }
 
-    public ProjectModel update(ProjectModel project) throws Exception {
+    public boolean update(int id, String name, String description, Status status, Date startAt, Date endAt)
+            throws Exception {
         String sql = "UPDATE projects SET name = ?, description = ?, status = ?, start_at = ?, end_at = ? WHERE id = ?;";
 
-        return this.database
-                .query(sql, ProjectMapper.map(), project.getName(), project.getDescription(),
-                        project.getStatus().name(),
-                        project.getStartDate(), project.getEndDate())
-                .get(0);
+        return this.database.query(sql, name, description, status.name(), startAt, endAt, id);
     }
 
     public boolean delete(int id) {
