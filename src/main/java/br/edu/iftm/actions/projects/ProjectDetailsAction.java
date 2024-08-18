@@ -12,22 +12,22 @@ public class ProjectDetailsAction implements Action {
 
     public void execute() {
         try {
-            int projectId = this.askProjectId(scanner);
+            int projectId = this.askProjectId();
 
-            ProjectModel project = dao.find(projectId);
+            ProjectModel project = this.dao.find(projectId);
 
             this.displayProjectInfo(project);
 
             ProjectDetailsMenu menu = new ProjectDetailsMenu(project);
             menu.display();
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            System.out.println("Projeto não encontrado!");
         }
     }
 
-    private int askProjectId(Scanner scanner) {
+    private int askProjectId() {
         System.out.print("ID do projeto: ");
-        return scanner.readInt();
+        return this.scanner.readInt();
     }
 
     private void displayProjectInfo(ProjectModel project) {
