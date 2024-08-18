@@ -1,77 +1,59 @@
 package br.edu.iftm.database.daos;
 
-import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
+import br.edu.iftm.database.Database;
+import br.edu.iftm.database.mappers.ProjectMapper;
 import br.edu.iftm.database.models.ProjectModel;
 import br.edu.iftm.database.models.ProjectModel.Status;
 
 public class ProjectDAO {
-    private static List<ProjectModel> fakeProjects = new ArrayList<>() {
-        {
-            add(new ProjectModel(1, "Projeto 1", "Descrição do projeto 1"));
-            add(new ProjectModel(2, "Projeto 2", "Descrição do projeto 2", Status.IN_PROGRESS));
-            add(new ProjectModel(3, "Projeto 3", "Descrição do projeto 3", Status.FINISHED));
-        }
-    };
+    private final Database database;
 
-    public ProjectModel store(String name, String description) {
-        int id = ProjectDAO.fakeProjects.size() + 1;
-        ProjectModel project = new ProjectModel(id, name, description);
-        ProjectDAO.fakeProjects.add(project);
-        return project;
+    public ProjectDAO() {
+        this.database = new Database();
+    }
+
+    public ProjectModel store(String name, String description, Date start_at, Date end_at) {
+        String sql = "INSERT INTO projects(name, description, start_at, end_at) VALUES (?, ?, ?, ?)";
+
+        return this.database
+                .query(sql, ProjectMapper.map(), name, description, start_at, end_at)
+                .get(0);
     }
 
     public ProjectModel update(ProjectModel project) throws Exception {
-        try {
-            ProjectModel oldProject = this.find(project.getId());
-            int index = ProjectDAO.fakeProjects.indexOf(oldProject);
-            ProjectDAO.fakeProjects.set(index, project);
-            return project;
-        } catch (Exception e) {
-            throw e;
-        }
+        String sql = "UPDATE projects SET name = ?, description = ?, status = ?, start_at = ?, end_at = ? WHERE id = ?;";
+
+        return this.database
+                .query(sql, ProjectMapper.map(), project.getName(), project.getDescription(),
+                        project.getStatus().name(),
+                        project.getStartDate(), project.getEndDate())
+                .get(0);
     }
 
-    public boolean delete(int id) throws Exception {
-        boolean removed = ProjectDAO.fakeProjects.removeIf((project) -> project.getId() == id);
+    public boolean delete(int id) {
+        String sql = "DELETE FROM projects WHERE id = ?;";
 
-        if (removed) {
-            return removed;
-        } else {
-            throw new Exception("Projeto não encontrado!");
-        }
+        return this.database.query(sql, id);
     }
 
     public List<ProjectModel> list() {
-        return ProjectDAO.fakeProjects;
+        String sql = "SELECT * FROM projects;";
+
+        return this.database.query(sql, ProjectMapper.map());
     }
 
     public List<ProjectModel> list(Status status) {
-        List<ProjectModel> projects = new ArrayList<>();
+        String sql = "SELECT * FROM projects WHERE status = ?;";
 
-        for (ProjectModel project : ProjectDAO.fakeProjects) {
-            if (project.getStatus() == status) {
-                projects.add(project);
-            }
-        }
-
-        return projects;
+        return this.database.query(sql, ProjectMapper.map(), status.name());
     }
 
-    public ProjectModel find(int id) throws Exception {
-        ProjectModel project = null;
+    public ProjectModel find(int id) {
+        String sql = "SELECT * FROM projects WHERE id = ?;";
 
-        for (ProjectModel p : ProjectDAO.fakeProjects) {
-            if (p.getId() == id) {
-                project = p;
-            }
-        }
-
-        if (project == null) {
-            throw new Exception("Projeto não encontrado!");
-        }
-
-        return project;
+        return this.database.query(sql, ProjectMapper.map(), id).get(0);
     }
 }

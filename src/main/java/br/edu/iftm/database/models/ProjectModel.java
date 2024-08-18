@@ -14,27 +14,16 @@ public class ProjectModel {
     private String description;
     private TeamModel team;
     private Status status;
-    private Date startDate;
-    private Date endDate;
+    private Date startAt;
+    private Date endAt;
 
-    public ProjectModel(String name, String description) {
-        this.name = name;
-        this.description = description;
-        this.status = Status.PENDING;
-    }
-
-    public ProjectModel(int id, String name, String description) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.status = Status.PENDING;
-    }
-
-    public ProjectModel(int id, String name, String description, Status status) {
+    public ProjectModel(int id, String name, String description, Status status, Date startAt, Date endAt) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.status = status;
+        this.startAt = startAt;
+        this.endAt = endAt;
     }
 
     public int getId() {
@@ -58,11 +47,11 @@ public class ProjectModel {
     }
 
     public Date getStartDate() {
-        return this.startDate;
+        return this.startAt;
     }
 
     public Date getEndDate() {
-        return this.endDate;
+        return this.endAt;
     }
 
     @Override

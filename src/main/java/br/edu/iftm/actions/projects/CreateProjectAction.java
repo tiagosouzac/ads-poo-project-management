@@ -13,7 +13,7 @@ public class CreateProjectAction implements Action {
         String name = this.askProjectName();
         String description = this.askProjectDescription();
 
-        this.dao.store(name, description);
+        this.dao.store(name, description, null, null);
     }
 
     private String askProjectName() {

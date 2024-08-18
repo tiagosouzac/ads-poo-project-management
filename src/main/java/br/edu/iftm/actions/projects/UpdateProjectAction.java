@@ -28,9 +28,10 @@ public class UpdateProjectAction implements Action {
             description = this.askProjectDescription(description);
             status = this.askProjectStatus(status);
 
-            ProjectModel updatedProject = new ProjectModel(this.project.getId(), name, description, status);
+            // ProjectModel updatedProject = new ProjectModel(this.project.getId(), name,
+            // description, status);
 
-            this.dao.update(updatedProject);
+            // this.dao.update(updatedProject);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
