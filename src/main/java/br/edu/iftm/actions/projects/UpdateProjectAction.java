@@ -20,14 +20,12 @@ public class UpdateProjectAction implements Action {
 
     public void execute() {
         try {
-            ProjectModel existingProject = this.dao.find(this.project.getId());
-
-            int id = existingProject.getId();
-            String name = this.askProjectName(existingProject.getName());
-            String description = this.askProjectDescription(existingProject.getDescription());
-            Status status = this.askProjectStatus(existingProject.getStatus());
-            Date startAt = this.askProjectStartDate(existingProject.getStartDate());
-            Date endAt = this.askProjectEndDate(existingProject.getEndDate(), startAt);
+            int id = this.project.getId();
+            String name = this.askProjectName(this.project.getName());
+            String description = this.askProjectDescription(this.project.getDescription());
+            Status status = this.askProjectStatus(this.project.getStatus());
+            Date startAt = this.askProjectStartDate(this.project.getStartDate());
+            Date endAt = this.askProjectEndDate(this.project.getEndDate(), startAt);
 
             if (this.dao.update(id, name, description, status, startAt, endAt)) {
                 System.out.println("Projeto atualizado com sucesso!");
