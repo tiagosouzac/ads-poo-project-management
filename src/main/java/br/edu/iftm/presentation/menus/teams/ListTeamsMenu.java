@@ -1,4 +1,4 @@
-package br.edu.iftm.presentation.menus;
+package br.edu.iftm.presentation.menus.teams;
 
 import br.edu.iftm.actions.teams.CreateTeamAction;
 import br.edu.iftm.presentation.menu.Menu;

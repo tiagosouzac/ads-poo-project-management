@@ -5,7 +5,7 @@ import java.util.List;
 import br.edu.iftm.actions.Action;
 import br.edu.iftm.database.daos.ProjectDAO;
 import br.edu.iftm.database.models.ProjectModel;
-import br.edu.iftm.presentation.menus.ListProjectsMenu;
+import br.edu.iftm.presentation.menus.projects.ListProjectsMenu;
 
 public class ListProjectsAction implements Action {
     private final ProjectDAO dao = new ProjectDAO();

@@ -1,4 +1,4 @@
-package br.edu.iftm.presentation.menus;
+package br.edu.iftm.presentation.menus.projects;
 
 import br.edu.iftm.actions.projects.DeleteProjectAction;
 import br.edu.iftm.actions.projects.UpdateProjectAction;
