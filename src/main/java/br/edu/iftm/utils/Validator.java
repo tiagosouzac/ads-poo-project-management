@@ -34,4 +34,10 @@ public class Validator {
             return Validator.string.isValid(name, 1, 255);
         }
     }
+
+    public static class member {
+        public static boolean isValidName(String name) {
+            return Validator.string.isValid(name, 1, 255);
+        }
+    }
 }
