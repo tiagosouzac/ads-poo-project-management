@@ -3,6 +3,7 @@ package br.edu.iftm.database.daos;
 import java.util.List;
 
 import br.edu.iftm.database.Database;
+import br.edu.iftm.database.mappers.ProjectMapper;
 import br.edu.iftm.database.mappers.TeamMapper;
 import br.edu.iftm.database.models.TeamModel;
 
@@ -34,6 +35,9 @@ public class TeamDAO {
         return this.database.query(sql, TeamMapper.map());
     }
 
-    public void find() {
+    public TeamModel find(int id) {
+        String sql = "SELECT * FROM teams WHERE id = ?;";
+
+        return this.database.query(sql, TeamMapper.map(), id).get(0);
     }
 }
