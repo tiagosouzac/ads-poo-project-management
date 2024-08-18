@@ -22,7 +22,10 @@ public class TeamDAO {
     public void update() {
     }
 
-    public void delete() {
+    public boolean delete(int id) {
+        String sql = "DELETE FROM teams WHERE id = ?;";
+
+        return this.database.query(sql, id);
     }
 
     public List<TeamModel> list() {

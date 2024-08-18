@@ -16,7 +16,7 @@ public class DeleteProjectAction implements Action {
         try {
             this.dao.delete(project.getId());
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            System.out.println("Não foi possível excluir o projeto. Erro: " + e.getMessage());
         }
     }
 }
