@@ -1,6 +1,10 @@
 package br.edu.iftm.database.daos;
 
+import java.util.List;
+
 import br.edu.iftm.database.Database;
+import br.edu.iftm.database.mappers.TeamMapper;
+import br.edu.iftm.database.models.TeamModel;
 
 public class TeamDAO {
     private final Database database;
@@ -21,7 +25,10 @@ public class TeamDAO {
     public void delete() {
     }
 
-    public void list() {
+    public List<TeamModel> list() {
+        String sql = "SELECT * FROM teams;";
+
+        return this.database.query(sql, TeamMapper.map());
     }
 
     public void find() {

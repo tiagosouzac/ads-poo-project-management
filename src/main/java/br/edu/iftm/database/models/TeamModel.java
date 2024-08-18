@@ -1,9 +1,19 @@
 package br.edu.iftm.database.models;
 
-import java.util.List;
-
 public class TeamModel {
     private int id;
     private String name;
-    private List<MemberModel> members;
+
+    public TeamModel(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public int getId() {
+        return this.id;
+    }
+
+    public String getName() {
+        return this.name;
+    }
 }
