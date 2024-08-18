@@ -4,22 +4,22 @@ import java.util.List;
 
 import br.edu.iftm.actions.Action;
 import br.edu.iftm.database.daos.MemberDAO;
-import br.edu.iftm.database.models.MemberModel;
-import br.edu.iftm.database.models.TeamModel;
+import br.edu.iftm.database.models.Member;
+import br.edu.iftm.database.models.Team;
 
 public class ListTeamMembersAction implements Action {
     private final MemberDAO dao = new MemberDAO();
-    private final TeamModel team;
+    private final Team team;
 
-    public ListTeamMembersAction(TeamModel team) {
+    public ListTeamMembersAction(Team team) {
         this.team = team;
     }
 
     public void execute() {
-        List<MemberModel> members = this.dao.list(this.team.getId());
+        List<Member> members = this.dao.list(this.team.getId());
 
         if (!members.isEmpty()) {
-            for (MemberModel member : members) {
+            for (Member member : members) {
                 System.out.println(member.getId() + ". " + member.getName());
             }
         } else {

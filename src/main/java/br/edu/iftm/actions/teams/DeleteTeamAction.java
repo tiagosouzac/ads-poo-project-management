@@ -2,13 +2,13 @@ package br.edu.iftm.actions.teams;
 
 import br.edu.iftm.actions.Action;
 import br.edu.iftm.database.daos.TeamDAO;
-import br.edu.iftm.database.models.TeamModel;
+import br.edu.iftm.database.models.Team;
 
 public class DeleteTeamAction implements Action {
     private final TeamDAO dao = new TeamDAO();
-    private final TeamModel team;
+    private final Team team;
 
-    public DeleteTeamAction(TeamModel team) {
+    public DeleteTeamAction(Team team) {
         this.team = team;
     }
 

@@ -4,17 +4,17 @@ import java.util.Date;
 
 import br.edu.iftm.actions.Action;
 import br.edu.iftm.database.daos.ProjectDAO;
-import br.edu.iftm.database.models.ProjectModel;
-import br.edu.iftm.database.models.ProjectModel.Status;
+import br.edu.iftm.database.models.Project;
+import br.edu.iftm.database.models.Project.Status;
 import br.edu.iftm.utils.Scanner;
 import br.edu.iftm.utils.Validator;
 
 public class UpdateProjectAction implements Action {
     private final ProjectDAO dao = new ProjectDAO();
     private final Scanner scanner = new Scanner();
-    private ProjectModel project;
+    private Project project;
 
-    public UpdateProjectAction(ProjectModel project) {
+    public UpdateProjectAction(Project project) {
         this.project = project;
     }
 
@@ -24,8 +24,8 @@ public class UpdateProjectAction implements Action {
             String name = this.askProjectName(this.project.getName());
             String description = this.askProjectDescription(this.project.getDescription());
             Status status = this.askProjectStatus(this.project.getStatus());
-            Date startAt = this.askProjectStartDate(this.project.getStartDate());
-            Date endAt = this.askProjectEndDate(this.project.getEndDate(), startAt);
+            Date startAt = this.askProjectStartDate(this.project.getStartAt());
+            Date endAt = this.askProjectEndDate(this.project.getEndAt(), startAt);
 
             if (this.dao.update(id, name, description, status, startAt, endAt)) {
                 System.out.println("Projeto atualizado com sucesso!");

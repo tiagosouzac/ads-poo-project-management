@@ -4,7 +4,7 @@ import java.util.List;
 
 import br.edu.iftm.database.Database;
 import br.edu.iftm.database.mappers.TeamMapper;
-import br.edu.iftm.database.models.TeamModel;
+import br.edu.iftm.database.models.Team;
 
 public class TeamDAO {
     private final Database database;
@@ -31,13 +31,13 @@ public class TeamDAO {
         return this.database.query(sql, id);
     }
 
-    public List<TeamModel> list() {
+    public List<Team> list() {
         String sql = "SELECT * FROM teams;";
 
         return this.database.query(sql, TeamMapper.map());
     }
 
-    public TeamModel find(int id) {
+    public Team find(int id) {
         String sql = "SELECT * FROM teams WHERE id = ?;";
 
         return this.database.query(sql, TeamMapper.map(), id).get(0);

@@ -5,8 +5,8 @@ import java.util.List;
 
 import br.edu.iftm.database.Database;
 import br.edu.iftm.database.mappers.ProjectMapper;
-import br.edu.iftm.database.models.ProjectModel;
-import br.edu.iftm.database.models.ProjectModel.Status;
+import br.edu.iftm.database.models.Project;
+import br.edu.iftm.database.models.Project.Status;
 
 public class ProjectDAO {
     private final Database database;
@@ -34,19 +34,19 @@ public class ProjectDAO {
         return this.database.query(sql, id);
     }
 
-    public List<ProjectModel> list() {
+    public List<Project> list() {
         String sql = "SELECT * FROM projects;";
 
         return this.database.query(sql, ProjectMapper.map());
     }
 
-    public List<ProjectModel> list(Status status) {
+    public List<Project> list(Status status) {
         String sql = "SELECT * FROM projects WHERE status = ?;";
 
         return this.database.query(sql, ProjectMapper.map(), status.name());
     }
 
-    public ProjectModel find(int id) {
+    public Project find(int id) {
         String sql = "SELECT * FROM projects WHERE id = ?;";
 
         return this.database.query(sql, ProjectMapper.map(), id).get(0);

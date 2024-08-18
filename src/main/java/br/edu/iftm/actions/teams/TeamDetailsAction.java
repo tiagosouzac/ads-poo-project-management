@@ -2,7 +2,7 @@ package br.edu.iftm.actions.teams;
 
 import br.edu.iftm.actions.Action;
 import br.edu.iftm.database.daos.TeamDAO;
-import br.edu.iftm.database.models.TeamModel;
+import br.edu.iftm.database.models.Team;
 import br.edu.iftm.utils.Scanner;
 
 public class TeamDetailsAction implements Action {
@@ -13,7 +13,7 @@ public class TeamDetailsAction implements Action {
         try {
             int teamId = this.askTeamId();
 
-            TeamModel team = this.dao.find(teamId);
+            Team team = this.dao.find(teamId);
 
             this.displayTeamInfo(team);
         } catch (Exception e) {
@@ -26,7 +26,7 @@ public class TeamDetailsAction implements Action {
         return this.scanner.readInt();
     }
 
-    private void displayTeamInfo(TeamModel team) {
+    private void displayTeamInfo(Team team) {
         System.out.println("Nome: " + team.getName());
     }
 }

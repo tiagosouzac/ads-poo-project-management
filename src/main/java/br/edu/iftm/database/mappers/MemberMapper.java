@@ -4,11 +4,11 @@ import java.util.function.Function;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 
-import br.edu.iftm.database.models.MemberModel;
-import br.edu.iftm.database.models.MemberModel.Role;
+import br.edu.iftm.database.models.Member;
+import br.edu.iftm.database.models.Member.Role;
 
 public class MemberMapper {
-    public static Function<ResultSet, MemberModel> map() {
+    public static Function<ResultSet, Member> map() {
         return member -> {
             try {
                 int id = member.getInt("id");
@@ -16,7 +16,7 @@ public class MemberMapper {
                 Role role = Role.valueOf(member.getString("role"));
                 int teamId = member.getInt("teamId");
 
-                return new MemberModel(id, name, role, teamId);
+                return new Member(id, name, role, teamId);
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }

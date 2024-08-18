@@ -2,16 +2,16 @@ package br.edu.iftm.actions.teams;
 
 import br.edu.iftm.actions.Action;
 import br.edu.iftm.database.daos.TeamDAO;
-import br.edu.iftm.database.models.TeamModel;
+import br.edu.iftm.database.models.Team;
 import br.edu.iftm.utils.Scanner;
 import br.edu.iftm.utils.Validator;
 
 public class UpdateTeamAction implements Action {
     private final TeamDAO dao = new TeamDAO();
     private final Scanner scanner = new Scanner();
-    private final TeamModel team;
+    private final Team team;
 
-    public UpdateTeamAction(TeamModel team) {
+    public UpdateTeamAction(Team team) {
         this.team = team;
     }
 

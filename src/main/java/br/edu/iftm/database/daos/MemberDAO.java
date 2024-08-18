@@ -4,8 +4,8 @@ import java.util.List;
 
 import br.edu.iftm.database.Database;
 import br.edu.iftm.database.mappers.MemberMapper;
-import br.edu.iftm.database.models.MemberModel;
-import br.edu.iftm.database.models.MemberModel.Role;
+import br.edu.iftm.database.models.Member;
+import br.edu.iftm.database.models.Member.Role;
 
 public class MemberDAO {
     private final Database database;
@@ -32,13 +32,13 @@ public class MemberDAO {
         return this.database.query(sql, id);
     }
 
-    public List<MemberModel> list(int teamId) {
+    public List<Member> list(int teamId) {
         String sql = "SELECT * FROM members WHERE team_id = ?;";
 
         return this.database.query(sql, MemberMapper.map(), teamId);
     }
 
-    public MemberModel find(int id) {
+    public Member find(int id) {
         String sql = "SELECT * FROM members WHERE id = ?;";
 
         return this.database.query(sql, MemberMapper.map(), id).get(0);

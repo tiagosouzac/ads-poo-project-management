@@ -2,7 +2,7 @@ package br.edu.iftm.actions.projects;
 
 import br.edu.iftm.actions.Action;
 import br.edu.iftm.database.daos.ProjectDAO;
-import br.edu.iftm.database.models.ProjectModel;
+import br.edu.iftm.database.models.Project;
 import br.edu.iftm.utils.Scanner;
 
 public class ProjectDetailsAction implements Action {
@@ -13,7 +13,7 @@ public class ProjectDetailsAction implements Action {
         try {
             int projectId = this.askProjectId();
 
-            ProjectModel project = this.dao.find(projectId);
+            Project project = this.dao.find(projectId);
 
             this.displayProjectInfo(project);
         } catch (Exception e) {
@@ -26,17 +26,17 @@ public class ProjectDetailsAction implements Action {
         return this.scanner.readInt();
     }
 
-    private void displayProjectInfo(ProjectModel project) {
+    private void displayProjectInfo(Project project) {
         System.out.println("Nome: " + project.getName());
         System.out.println("Descrição: " + project.getDescription());
         System.out.println("Status: " + project.getStatus());
 
-        if (project.getStartDate() != null) {
-            System.out.println("Iniciado em: " + project.getStartDate());
+        if (project.getStartAt() != null) {
+            System.out.println("Iniciado em: " + project.getStartAt());
         }
 
-        if (project.getEndDate() != null) {
-            System.out.println("Finalizado em: " + project.getEndDate());
+        if (project.getEndAt() != null) {
+            System.out.println("Finalizado em: " + project.getEndAt());
         }
     }
 }
