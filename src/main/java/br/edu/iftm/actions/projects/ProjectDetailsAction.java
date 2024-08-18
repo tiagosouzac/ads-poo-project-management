@@ -3,7 +3,6 @@ package br.edu.iftm.actions.projects;
 import br.edu.iftm.actions.Action;
 import br.edu.iftm.database.daos.ProjectDAO;
 import br.edu.iftm.database.models.ProjectModel;
-import br.edu.iftm.presentation.menus.projects.ProjectDetailsMenu;
 import br.edu.iftm.utils.Scanner;
 
 public class ProjectDetailsAction implements Action {
@@ -17,9 +16,6 @@ public class ProjectDetailsAction implements Action {
             ProjectModel project = this.dao.find(projectId);
 
             this.displayProjectInfo(project);
-
-            ProjectDetailsMenu menu = new ProjectDetailsMenu(project);
-            menu.display();
         } catch (Exception e) {
             System.out.println("Projeto não encontrado!");
         }
