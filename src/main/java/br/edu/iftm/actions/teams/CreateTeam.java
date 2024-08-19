@@ -1,15 +1,14 @@
 package br.edu.iftm.actions.teams;
 
-import br.edu.iftm.actions.Action;
 import br.edu.iftm.database.daos.TeamDAO;
 import br.edu.iftm.utils.Scanner;
 import br.edu.iftm.utils.Validator;
 
-public class CreateTeamAction implements Action {
+public class CreateTeam {
     private final TeamDAO dao = new TeamDAO();
     private final Scanner scanner = new Scanner();
 
-    public void execute() {
+    public void create() {
         String name = this.askTeamName();
 
         try {

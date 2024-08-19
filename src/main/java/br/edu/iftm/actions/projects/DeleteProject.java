@@ -1,18 +1,17 @@
 package br.edu.iftm.actions.projects;
 
-import br.edu.iftm.actions.Action;
 import br.edu.iftm.database.daos.ProjectDAO;
 import br.edu.iftm.database.models.Project;
 
-public class DeleteProjectAction implements Action {
+public class DeleteProject {
     private final ProjectDAO dao = new ProjectDAO();
     private final Project project;
 
-    public DeleteProjectAction(Project project) {
+    public DeleteProject(Project project) {
         this.project = project;
     }
 
-    public void execute() {
+    public void delete() {
         try {
             this.dao.delete(project.getId());
         } catch (Exception e) {

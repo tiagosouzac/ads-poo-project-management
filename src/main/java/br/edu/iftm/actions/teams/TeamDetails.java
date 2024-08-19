@@ -1,15 +1,14 @@
 package br.edu.iftm.actions.teams;
 
-import br.edu.iftm.actions.Action;
 import br.edu.iftm.database.daos.TeamDAO;
 import br.edu.iftm.database.models.Team;
 import br.edu.iftm.utils.Scanner;
 
-public class TeamDetailsAction implements Action {
+public class TeamDetails {
     private final TeamDAO dao = new TeamDAO();
     private final Scanner scanner = new Scanner();
 
-    public void execute() {
+    public void show() {
         try {
             int teamId = this.askTeamId();
 

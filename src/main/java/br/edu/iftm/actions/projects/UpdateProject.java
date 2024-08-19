@@ -2,23 +2,22 @@ package br.edu.iftm.actions.projects;
 
 import java.util.Date;
 
-import br.edu.iftm.actions.Action;
 import br.edu.iftm.database.daos.ProjectDAO;
 import br.edu.iftm.database.models.Project;
 import br.edu.iftm.database.models.Project.Status;
 import br.edu.iftm.utils.Scanner;
 import br.edu.iftm.utils.Validator;
 
-public class UpdateProjectAction implements Action {
+public class UpdateProject {
     private final ProjectDAO dao = new ProjectDAO();
     private final Scanner scanner = new Scanner();
     private Project project;
 
-    public UpdateProjectAction(Project project) {
+    public UpdateProject(Project project) {
         this.project = project;
     }
 
-    public void execute() {
+    public void update() {
         try {
             int id = this.project.getId();
             String name = this.askProjectName(this.project.getName());

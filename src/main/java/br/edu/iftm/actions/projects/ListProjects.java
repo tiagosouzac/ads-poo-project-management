@@ -2,14 +2,13 @@ package br.edu.iftm.actions.projects;
 
 import java.util.List;
 
-import br.edu.iftm.actions.Action;
 import br.edu.iftm.database.daos.ProjectDAO;
 import br.edu.iftm.database.models.Project;
 
-public class ListProjectsAction implements Action {
+public class ListProjects {
     private final ProjectDAO dao = new ProjectDAO();
 
-    public void execute() {
+    public void list() {
         List<Project> projects = this.dao.list();
 
         if (!projects.isEmpty()) {

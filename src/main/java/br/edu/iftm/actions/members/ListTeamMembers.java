@@ -2,20 +2,19 @@ package br.edu.iftm.actions.members;
 
 import java.util.List;
 
-import br.edu.iftm.actions.Action;
 import br.edu.iftm.database.daos.MemberDAO;
 import br.edu.iftm.database.models.Member;
 import br.edu.iftm.database.models.Team;
 
-public class ListTeamMembersAction implements Action {
+public class ListTeamMembers {
     private final MemberDAO dao = new MemberDAO();
     private final Team team;
 
-    public ListTeamMembersAction(Team team) {
+    public ListTeamMembers(Team team) {
         this.team = team;
     }
 
-    public void execute() {
+    public void list() {
         List<Member> members = this.dao.list(this.team.getId());
 
         if (!members.isEmpty()) {

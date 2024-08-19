@@ -2,14 +2,13 @@ package br.edu.iftm.actions.teams;
 
 import java.util.List;
 
-import br.edu.iftm.actions.Action;
 import br.edu.iftm.database.daos.TeamDAO;
 import br.edu.iftm.database.models.Team;
 
-public class ListTeamsAction implements Action {
+public class ListTeams {
     private final TeamDAO dao = new TeamDAO();
 
-    public void execute() {
+    public void list() {
         List<Team> teams = this.dao.list();
 
         if (!teams.isEmpty()) {

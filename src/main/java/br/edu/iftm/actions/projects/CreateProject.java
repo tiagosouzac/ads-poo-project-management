@@ -2,16 +2,15 @@ package br.edu.iftm.actions.projects;
 
 import java.util.Date;
 
-import br.edu.iftm.actions.Action;
 import br.edu.iftm.database.daos.ProjectDAO;
 import br.edu.iftm.utils.Scanner;
 import br.edu.iftm.utils.Validator;
 
-public class CreateProjectAction implements Action {
+public class CreateProject {
     private final ProjectDAO dao = new ProjectDAO();
     private final Scanner scanner = new Scanner();
 
-    public void execute() {
+    public void create() {
         String name = this.askProjectName();
         String description = this.askProjectDescription();
         Date startAt = this.askProjectStartDate();

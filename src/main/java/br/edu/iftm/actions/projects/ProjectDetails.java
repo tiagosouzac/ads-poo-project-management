@@ -1,15 +1,14 @@
 package br.edu.iftm.actions.projects;
 
-import br.edu.iftm.actions.Action;
 import br.edu.iftm.database.daos.ProjectDAO;
 import br.edu.iftm.database.models.Project;
 import br.edu.iftm.utils.Scanner;
 
-public class ProjectDetailsAction implements Action {
+public class ProjectDetails {
     private final ProjectDAO dao = new ProjectDAO();
     private final Scanner scanner = new Scanner();
 
-    public void execute() {
+    public void show() {
         try {
             int projectId = this.askProjectId();
 

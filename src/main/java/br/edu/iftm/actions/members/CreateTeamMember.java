@@ -1,16 +1,15 @@
 package br.edu.iftm.actions.members;
 
-import br.edu.iftm.actions.Action;
 import br.edu.iftm.database.daos.MemberDAO;
 import br.edu.iftm.database.models.Member.Role;
 import br.edu.iftm.utils.Scanner;
 import br.edu.iftm.utils.Validator;
 
-public class CreateTeamMemberAction implements Action {
+public class CreateTeamMember {
     private final MemberDAO dao = new MemberDAO();
     private final Scanner scanner = new Scanner();
 
-    public void execute() {
+    public void create() {
         String name = this.askMemberName();
         Role role = this.askMemberRole();
         int teamId = this.askTeamId();
