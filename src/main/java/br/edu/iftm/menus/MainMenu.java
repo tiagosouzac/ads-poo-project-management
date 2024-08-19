@@ -1,10 +1,6 @@
 package br.edu.iftm.menus;
 
-import br.edu.iftm.utils.Scanner;
-
 public class MainMenu extends Menu {
-    private final Scanner scanner = new Scanner();
-
     public void display() {
         while (true) {
             System.out.println("1. Gerenciar projetos");

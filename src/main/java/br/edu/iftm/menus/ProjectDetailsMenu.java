@@ -1,11 +1,11 @@
 package br.edu.iftm.menus;
 
-public class TeamsMenu extends Menu {
+public class ProjectDetailsMenu extends Menu {
     public void display() {
         while (true) {
-            System.out.println("1. Listar equipes");
-            System.out.println("2. Ver detalhes de uma equipe");
-            System.out.println("0. Voltar para o menu inicial");
+            System.out.println("1. Atualizar o projeto");
+            System.out.println("2. Excluir o projeto");
+            System.out.println("0. Voltar para o menu de projetos");
 
             int selectedOption = this.scanner.readInt();
 
@@ -17,7 +17,7 @@ public class TeamsMenu extends Menu {
                     break;
 
                 case 2:
-                    new TeamDetailsMenu().display();
+
                     break;
 
                 case 0:

@@ -1,10 +1,6 @@
 package br.edu.iftm.menus;
 
-import br.edu.iftm.utils.Scanner;
-
 public class ProjectsMenu extends Menu {
-    private final Scanner scanner = new Scanner();
-
     public void display() {
         while (true) {
             System.out.println("1. Listar todos os projetos");
@@ -41,36 +37,7 @@ public class ProjectsMenu extends Menu {
                     break;
 
                 case 6:
-                    this.displayProjectDetailsMenu();
-                    break;
-
-                case 0:
-                    return;
-
-                default:
-                    System.out.println("Opção inválida! Selecione novamente");
-                    break;
-            }
-        }
-    }
-
-    private void displayProjectDetailsMenu() {
-        while (true) {
-            System.out.println("1. Atualizar o projeto");
-            System.out.println("2. Excluir o projeto");
-            System.out.println("0. Voltar para o menu de projetos");
-
-            int selectedOption = this.scanner.readInt();
-
-            this.clearConsole();
-
-            switch (selectedOption) {
-                case 1:
-
-                    break;
-
-                case 2:
-
+                    new ProjectDetailsMenu().display();
                     break;
 
                 case 0:
