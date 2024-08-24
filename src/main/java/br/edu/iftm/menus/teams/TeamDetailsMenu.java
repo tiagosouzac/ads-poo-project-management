@@ -1,5 +1,6 @@
 package br.edu.iftm.menus.teams;
 
+import br.edu.iftm.actions.teams.AddTeamMember;
 import br.edu.iftm.actions.teams.DeleteTeam;
 import br.edu.iftm.actions.teams.TeamDetails;
 import br.edu.iftm.actions.teams.UpdateTeam;
@@ -31,7 +32,7 @@ public class TeamDetailsMenu extends Menu {
                     break;
 
                 case 2:
-
+                    new AddTeamMember(team).add();
                     break;
 
                 case 3:

@@ -30,5 +30,6 @@ public class TeamDetails {
 
     private void displayTeamInfo(Team team) {
         System.out.println("Nome: " + team.getName());
+        
     }
 }
