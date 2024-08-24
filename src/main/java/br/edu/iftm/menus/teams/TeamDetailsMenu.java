@@ -11,6 +11,10 @@ public class TeamDetailsMenu extends Menu {
         while (true) {
             Team team = new TeamDetails().show();
 
+            if (team == null) {
+                break;
+            }
+
             System.out.println("1. Atualizar informações da equipe");
             System.out.println("2. Adicionar integrante na equipe");
             System.out.println("3. Remover integrante da equipe");
@@ -36,7 +40,7 @@ public class TeamDetailsMenu extends Menu {
 
                 case 4:
                     new DeleteTeam(team).delete();
-                    break;
+                    return;
 
                 case 0:
                     return;

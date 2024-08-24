@@ -1,10 +1,18 @@
 package br.edu.iftm.menus.members;
 
+import br.edu.iftm.actions.members.MemberDetails;
+import br.edu.iftm.database.models.Member;
 import br.edu.iftm.menus.Menu;
 
 public class MemberDetailsMenu extends Menu {
     public void display() {
         while (true) {
+            Member member = new MemberDetails().show();
+
+            if (member == null) {
+                break;
+            }
+
             System.out.println("1. Atualizar funcionário");
             System.out.println("2. Excluir funcionário");
             System.out.println("0. Voltar para o menu de funcionários");

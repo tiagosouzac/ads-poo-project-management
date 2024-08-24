@@ -11,6 +11,10 @@ public class ProjectDetailsMenu extends Menu {
         while (true) {
             Project project = new ProjectDetails().show();
 
+            if (project == null) {
+                break;
+            }
+
             System.out.println();
             System.out.println("1. Atualizar o projeto");
             System.out.println("2. Excluir o projeto");

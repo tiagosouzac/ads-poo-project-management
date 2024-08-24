@@ -1,13 +1,14 @@
 package br.edu.iftm.menus.members;
 
+import br.edu.iftm.actions.members.CreateTeamMember;
 import br.edu.iftm.menus.Menu;
 
 public class MembersMenu extends Menu {
     public void display() {
         while (true) {
             System.out.println("1. Listar todos os funcionários");
-            System.out.println("2. Ver detalhes do funcionário");
-            System.out.println("3. Criar novo funcionário");
+            System.out.println("2. Criar novo funcionário");
+            System.out.println("3. Ver detalhes do funcionário");
             System.out.println("0. Voltar para o menu inicial");
 
             int selectedOption = this.scanner.readInt();
@@ -20,11 +21,11 @@ public class MembersMenu extends Menu {
                     break;
 
                 case 2:
-                    new MemberDetailsMenu().display();
+                    new CreateTeamMember().create();
                     break;
 
                 case 3:
-
+                    new MemberDetailsMenu().display();
                     break;
 
                 case 0:
