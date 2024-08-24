@@ -1,5 +1,6 @@
 package br.edu.iftm.menus.members;
 
+import br.edu.iftm.actions.members.DeleteMember;
 import br.edu.iftm.actions.members.MemberDetails;
 import br.edu.iftm.database.models.Member;
 import br.edu.iftm.menus.Menu;
@@ -27,8 +28,8 @@ public class MemberDetailsMenu extends Menu {
                     break;
 
                 case 2:
-
-                    break;
+                    new DeleteMember(member).delete();
+                    return;
 
                 case 0:
                     return;
