@@ -14,7 +14,7 @@ public class MemberMapper {
                 int id = member.getInt("id");
                 String name = member.getString("name");
                 Role role = Role.valueOf(member.getString("role"));
-                int teamId = member.getInt("teamId");
+                int teamId = member.getInt("team_id");
 
                 return new Member(id, name, role, teamId);
             } catch (SQLException e) {

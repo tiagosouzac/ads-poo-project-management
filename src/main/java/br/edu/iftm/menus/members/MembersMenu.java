@@ -1,6 +1,7 @@
 package br.edu.iftm.menus.members;
 
 import br.edu.iftm.actions.members.CreateMember;
+import br.edu.iftm.actions.members.ListMembers;
 import br.edu.iftm.menus.Menu;
 
 public class MembersMenu extends Menu {
@@ -17,7 +18,7 @@ public class MembersMenu extends Menu {
 
             switch (selectedOption) {
                 case 1:
-
+                    new ListMembers().list();
                     break;
 
                 case 2:
