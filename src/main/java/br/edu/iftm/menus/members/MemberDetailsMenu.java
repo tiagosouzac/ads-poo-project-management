@@ -2,6 +2,7 @@ package br.edu.iftm.menus.members;
 
 import br.edu.iftm.actions.members.DeleteMember;
 import br.edu.iftm.actions.members.MemberDetails;
+import br.edu.iftm.actions.members.UpdateMember;
 import br.edu.iftm.database.models.Member;
 import br.edu.iftm.menus.Menu;
 
@@ -15,7 +16,8 @@ public class MemberDetailsMenu extends Menu {
             }
 
             System.out.println("1. Atualizar funcionário");
-            System.out.println("2. Excluir funcionário");
+            System.out.println("2. Mudar de time");
+            System.out.println("3. Excluir funcionário");
             System.out.println("0. Voltar para o menu de funcionários");
 
             int selectedOption = this.scanner.readInt();
@@ -24,10 +26,13 @@ public class MemberDetailsMenu extends Menu {
 
             switch (selectedOption) {
                 case 1:
-
+                    new UpdateMember(member).update();
                     break;
 
                 case 2:
+                    return;
+
+                case 3:
                     new DeleteMember(member).delete();
                     return;
 

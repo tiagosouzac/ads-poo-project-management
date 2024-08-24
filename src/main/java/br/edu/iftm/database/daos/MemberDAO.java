@@ -21,15 +21,15 @@ public class MemberDAO {
     }
 
     public boolean store(String name, Role role, int teamId) {
-        String sql = "INSERT INTO members(name, role, teamId) values (?, ?, ?)";
+        String sql = "INSERT INTO members(name, role, team_id) values (?, ?, ?)";
 
         return this.database.query(sql, name, role, teamId);
     }
 
-    public boolean update(int id, String name, Role role, int teamId) {
-        String sql = "UPDATE members SET name = ?, role = ?, teamId = ? WHERE id = ?;";
+    public boolean update(int id, String name, Role role) {
+        String sql = "UPDATE members SET name = ?, role = ? WHERE id = ?;";
 
-        return this.database.query(sql, name, role, teamId, id);
+        return this.database.query(sql, name, role.name(), id);
     }
 
     public boolean delete(int id) {
