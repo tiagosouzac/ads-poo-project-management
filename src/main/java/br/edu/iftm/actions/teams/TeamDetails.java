@@ -8,15 +8,18 @@ public class TeamDetails {
     private final TeamDAO dao = new TeamDAO();
     private final Scanner scanner = new Scanner();
 
-    public void show() {
+    public Team show() {
         try {
             int teamId = this.askTeamId();
 
             Team team = this.dao.find(teamId);
 
             this.displayTeamInfo(team);
+
+            return team;
         } catch (Exception e) {
             System.out.println("Equipe não encontrada!");
+            return null;
         }
     }
 
