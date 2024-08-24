@@ -25,6 +25,12 @@ public class TeamDAO {
         return this.database.query(sql, name, id);
     }
 
+    public boolean update(int teamId, int projectId) {
+        String sql = "UPDATE teams SET project_id = ? WHERE id = ?;";
+
+        return this.database.query(sql, projectId, teamId);
+    }
+
     public boolean delete(int id) {
         String sql = "DELETE FROM teams WHERE id = ?;";
 
