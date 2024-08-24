@@ -50,4 +50,9 @@ public class Member {
     public void setTeamId(int teamId) {
         this.teamId = teamId;
     }
+
+    @Override
+    public String toString() {
+        return this.id + ". " + this.name + " - Cargo: " + this.role + " - Time: " + this.teamId;
+    }
 }

@@ -32,6 +32,16 @@ public class MemberDAO {
         return this.database.query(sql, name, role.name(), id);
     }
 
+    public boolean update(int id, Integer teamId){
+        if(teamId == null){
+            String sql = "UPDATE members SET team_id = NULL WHERE id = ?;";
+            return this.database.query(sql, id);
+        } else {
+            String sql = "UPDATE members SET team_id = ? WHERE id = ?;";
+            return this.database.query(sql, teamId, id);
+        }
+    }
+
     public boolean delete(int id) {
         String sql = "DELETE FROM members WHERE id = ?;";
 

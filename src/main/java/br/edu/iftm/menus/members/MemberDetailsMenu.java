@@ -3,6 +3,7 @@ package br.edu.iftm.menus.members;
 import br.edu.iftm.actions.members.DeleteMember;
 import br.edu.iftm.actions.members.MemberDetails;
 import br.edu.iftm.actions.members.UpdateMember;
+import br.edu.iftm.actions.members.UpdateMemberTeam;
 import br.edu.iftm.database.models.Member;
 import br.edu.iftm.menus.Menu;
 
@@ -30,6 +31,7 @@ public class MemberDetailsMenu extends Menu {
                     break;
 
                 case 2:
+                    new UpdateMemberTeam(member).update();
                     return;
 
                 case 3:

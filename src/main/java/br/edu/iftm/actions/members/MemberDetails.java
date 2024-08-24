@@ -29,7 +29,6 @@ public class MemberDetails {
     }
 
     private void displayMemberInfo(Member member) {
-        System.out.println("Nome: " + member.getName());
-        System.out.println("Cargo: " + member.getRole());
+        System.out.println(member);
     }
 }
