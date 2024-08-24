@@ -14,6 +14,12 @@ public class MemberDAO {
         this.database = new Database();
     }
 
+    public boolean store(String name, Role role) {
+        String sql = "INSERT INTO members(name, role) values (?, ?)";
+
+        return this.database.query(sql, name, role.name());
+    }
+
     public boolean store(String name, Role role, int teamId) {
         String sql = "INSERT INTO members(name, role, teamId) values (?, ?, ?)";
 

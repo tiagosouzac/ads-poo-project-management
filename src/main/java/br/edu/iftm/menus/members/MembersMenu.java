@@ -1,6 +1,6 @@
 package br.edu.iftm.menus.members;
 
-import br.edu.iftm.actions.members.CreateTeamMember;
+import br.edu.iftm.actions.members.CreateMember;
 import br.edu.iftm.menus.Menu;
 
 public class MembersMenu extends Menu {
@@ -21,7 +21,7 @@ public class MembersMenu extends Menu {
                     break;
 
                 case 2:
-                    new CreateTeamMember().create();
+                    new CreateMember().create();
                     break;
 
                 case 3:
