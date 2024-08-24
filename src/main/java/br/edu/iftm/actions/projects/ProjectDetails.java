@@ -8,15 +8,18 @@ public class ProjectDetails {
     private final ProjectDAO dao = new ProjectDAO();
     private final Scanner scanner = new Scanner();
 
-    public void show() {
+    public Project show() {
         try {
             int projectId = this.askProjectId();
 
             Project project = this.dao.find(projectId);
 
             this.displayProjectInfo(project);
+
+            return project;
         } catch (Exception e) {
             System.out.println("Projeto não encontrado!");
+            return null;
         }
     }
 

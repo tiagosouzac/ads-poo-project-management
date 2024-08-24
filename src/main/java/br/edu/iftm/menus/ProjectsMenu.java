@@ -1,5 +1,11 @@
 package br.edu.iftm.menus;
 
+import br.edu.iftm.actions.projects.CreateProject;
+import br.edu.iftm.actions.projects.ListFinishedProjects;
+import br.edu.iftm.actions.projects.ListInProgressProjects;
+import br.edu.iftm.actions.projects.ListPendingProjects;
+import br.edu.iftm.actions.projects.ListProjects;
+
 public class ProjectsMenu extends Menu {
     public void display() {
         while (true) {
@@ -17,23 +23,23 @@ public class ProjectsMenu extends Menu {
 
             switch (selectedOption) {
                 case 1:
-
+                    new ListProjects().list();
                     break;
 
                 case 2:
-
+                    new ListPendingProjects().list();
                     break;
 
                 case 3:
-
+                    new ListInProgressProjects().list();
                     break;
 
                 case 4:
-
+                    new ListFinishedProjects().list();
                     break;
 
                 case 5:
-
+                    new CreateProject().create();
                     break;
 
                 case 6:
