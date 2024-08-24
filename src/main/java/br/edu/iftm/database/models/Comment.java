@@ -8,7 +8,6 @@ public class Comment {
     private int memberId;
     private String text;
     private Date createdAt;
-    private Date updatedAt;
 
     public Comment(int id, int taskId, int memberId, String text, Date createdAt, Date updatedAt) {
         this.id = id;
@@ -16,7 +15,6 @@ public class Comment {
         this.memberId = memberId;
         this.text = text;
         this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
     }
 
     public int getId() {
@@ -57,13 +55,5 @@ public class Comment {
 
     public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
-    }
-
-    public Date getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(Date updatedAt) {
-        this.updatedAt = updatedAt;
     }
 }

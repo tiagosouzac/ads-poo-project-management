@@ -1,0 +1,9 @@
+CREATE TABLE IF NOT EXISTS `projects` (
+	`id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	`name` VARCHAR(255) NOT NULL,
+    `description` TEXT,
+    `status` ENUM('PENDING', 'IN_PROGRESS', 'FINISHED') DEFAULT 'PENDING',
+    `start_at` DATE,
+    `end_at` DATE,
+    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
