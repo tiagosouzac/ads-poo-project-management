@@ -1,4 +1,6 @@
-package br.edu.iftm.menus;
+package br.edu.iftm.menus.members;
+
+import br.edu.iftm.menus.Menu;
 
 public class MembersMenu extends Menu {
     public void display() {
@@ -32,6 +34,8 @@ public class MembersMenu extends Menu {
                     System.out.println("Opção inválida! Selecione novamente");
                     break;
             }
+
+            System.out.println();
         }
     }
 }

@@ -1,9 +1,10 @@
-package br.edu.iftm.menus;
+package br.edu.iftm.menus.teams;
 
 import br.edu.iftm.actions.teams.DeleteTeam;
 import br.edu.iftm.actions.teams.TeamDetails;
 import br.edu.iftm.actions.teams.UpdateTeam;
 import br.edu.iftm.database.models.Team;
+import br.edu.iftm.menus.Menu;
 
 public class TeamDetailsMenu extends Menu {
     public void display() {
@@ -44,6 +45,8 @@ public class TeamDetailsMenu extends Menu {
                     System.out.println("Opção inválida! Selecione novamente");
                     break;
             }
+
+            System.out.println();
         }
     }
 }

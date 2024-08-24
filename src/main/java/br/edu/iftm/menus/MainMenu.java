@@ -1,5 +1,9 @@
 package br.edu.iftm.menus;
 
+import br.edu.iftm.menus.members.MembersMenu;
+import br.edu.iftm.menus.projects.ProjectsMenu;
+import br.edu.iftm.menus.teams.TeamsMenu;
+
 public class MainMenu extends Menu {
     public void display() {
         while (true) {

@@ -1,10 +1,11 @@
-package br.edu.iftm.menus;
+package br.edu.iftm.menus.projects;
 
 import br.edu.iftm.actions.projects.CreateProject;
 import br.edu.iftm.actions.projects.ListFinishedProjects;
 import br.edu.iftm.actions.projects.ListInProgressProjects;
 import br.edu.iftm.actions.projects.ListPendingProjects;
 import br.edu.iftm.actions.projects.ListProjects;
+import br.edu.iftm.menus.Menu;
 
 public class ProjectsMenu extends Menu {
     public void display() {
@@ -53,6 +54,8 @@ public class ProjectsMenu extends Menu {
                     System.out.println("Opção inválida! Selecione novamente");
                     break;
             }
+
+            System.out.println();
         }
     }
 }
