@@ -7,14 +7,12 @@ public class Comment {
     private int taskId;
     private int memberId;
     private String text;
-    private Date createdAt;
 
-    public Comment(int id, int taskId, int memberId, String text, Date createdAt, Date updatedAt) {
+    public Comment(int id, int taskId, int memberId, String text) {
         this.id = id;
         this.taskId = taskId;
         this.memberId = memberId;
         this.text = text;
-        this.createdAt = createdAt;
     }
 
     public int getId() {
@@ -47,13 +45,5 @@ public class Comment {
 
     public void setText(String text) {
         this.text = text;
-    }
-
-    public Date getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
     }
 }
