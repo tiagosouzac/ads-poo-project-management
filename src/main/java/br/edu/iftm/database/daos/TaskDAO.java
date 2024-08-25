@@ -17,10 +17,10 @@ public class TaskDAO {
         return this.database.query(sql, projectId, description, completionDate);
     }
 
-    public boolean update(int id, String description, Date completionDate, Status status) {
-        String sql = "UPDATE tasks SET description = ?, completion_date = ?, status = ? WHERE id = ?;";
+    public boolean update(int projectId, int id, String description, Date completionDate, Status status) {
+        String sql = "UPDATE tasks SET description = ?, completion_date = ?, status = ? WHERE project_id = ? AND id = ?;";
 
-        return this.database.query(sql, description, completionDate, status.name(), id);
+        return this.database.query(sql, description, completionDate, status.name(), projectId, id);
     }
 
     public boolean delete(int projectId, int taskId) {
