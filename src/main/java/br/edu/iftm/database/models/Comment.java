@@ -5,13 +5,11 @@ import java.util.Date;
 public class Comment {
     private int id;
     private int taskId;
-    private int memberId;
     private String text;
 
-    public Comment(int id, int taskId, int memberId, String text) {
+    public Comment(int id, int taskId, String text) {
         this.id = id;
         this.taskId = taskId;
-        this.memberId = memberId;
         this.text = text;
     }
 
@@ -29,14 +27,6 @@ public class Comment {
 
     public void setTaskId(int taskId) {
         this.taskId = taskId;
-    }
-
-    public int getMemberId() {
-        return memberId;
-    }
-
-    public void setMemberId(int memberId) {
-        this.memberId = memberId;
     }
 
     public String getText() {

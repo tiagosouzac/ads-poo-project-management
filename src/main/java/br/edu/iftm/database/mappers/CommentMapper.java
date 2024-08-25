@@ -13,10 +13,9 @@ public class CommentMapper {
             try {
                 int id = comment.getInt("id");
                 int taskId = comment.getInt("task_id");
-                int memberId = comment.getInt("member_id");
                 String text = comment.getString("text");
 
-                return new Comment(id, taskId, memberId, text);
+                return new Comment(id, taskId, text);
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
