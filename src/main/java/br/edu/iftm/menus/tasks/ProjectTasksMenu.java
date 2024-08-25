@@ -26,6 +26,7 @@ public class ProjectTasksMenu extends Menu {
             System.out.println("4. Listar tarefas finalizadas");
             System.out.println("5. Criar nova tarefa");
             System.out.println("6. Ver detalhes da tarefa");
+            System.out.println("0. Voltar para os detalhes do projeto");
 
             int selectedOption = this.scanner.readInt();
 
@@ -55,6 +56,9 @@ public class ProjectTasksMenu extends Menu {
                 case 6:
                     new ProjectTasksDetailsMenu(project).display();
                     break;
+
+                case 0:
+                    return;
 
                 default:
                     System.out.println("Opção inválida! Selecione novamente");

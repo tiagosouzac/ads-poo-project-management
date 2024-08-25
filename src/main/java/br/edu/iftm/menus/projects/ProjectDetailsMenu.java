@@ -39,7 +39,7 @@ public class ProjectDetailsMenu extends Menu {
 
                 case 3:
                     new ProjectTasksMenu(project).display();
-                    return;
+                    break;
 
                 case 4:
                     new DeleteProject(project).delete();
