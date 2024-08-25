@@ -38,7 +38,7 @@ public class TasksCommentDetailsMenu extends Menu {
 
                 case 2:
                     new DeleteTaskComment(comment, task).delete();
-                    break;
+                    return;
 
                 case 0:
                     return;

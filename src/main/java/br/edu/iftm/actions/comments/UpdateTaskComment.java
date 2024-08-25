@@ -21,7 +21,7 @@ public class UpdateTaskComment {
         try {
             int commentId = this.comment.getId();
             int taskId = this.task.getId();
-            String text = this.askTaskCommentText(this.task.getDescription());
+            String text = this.askTaskCommentText(this.comment.getText());
 
             if (this.dao.update(commentId, taskId, text)) {
                 System.out.println("Comentário atualizado com sucesso!");
