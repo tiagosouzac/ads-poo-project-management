@@ -1,7 +1,5 @@
 package br.edu.iftm.database.models;
 
-import java.util.Date;
-
 public class Comment {
     private int id;
     private int taskId;

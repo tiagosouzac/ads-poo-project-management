@@ -1,6 +1,5 @@
 package br.edu.iftm.database.mappers;
 
-import java.util.Date;
 import java.util.function.Function;
 import java.sql.SQLException;
 import java.sql.ResultSet;
