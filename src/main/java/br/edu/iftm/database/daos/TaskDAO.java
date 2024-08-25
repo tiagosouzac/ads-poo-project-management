@@ -23,10 +23,10 @@ public class TaskDAO {
         return this.database.query(sql, description, completionDate, status.name(), id);
     }
 
-    public boolean delete(int id) {
-        String sql = "DELETE FROM tasks WHERE id = ?;";
+    public boolean delete(int projectId, int taskId) {
+        String sql = "DELETE FROM tasks WHERE project_id = ? AND id = ?;";
 
-        return this.database.query(sql, id);
+        return this.database.query(sql, projectId, taskId);
     }
 
     public List<Task> list(int projectId) {

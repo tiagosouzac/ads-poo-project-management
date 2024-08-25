@@ -13,7 +13,9 @@ public class DeleteProject {
 
     public void delete() {
         try {
-            this.dao.delete(project.getId());
+            if (this.dao.delete(project.getId())) {
+                System.out.println("Projeto excluído com sucesso!");
+            }
         } catch (Exception e) {
             System.out.println("Não foi possível excluir o projeto. Erro: " + e.getMessage());
         }
