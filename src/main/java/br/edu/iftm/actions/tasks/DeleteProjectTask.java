@@ -26,7 +26,7 @@ public class DeleteProjectTask {
         }
     }
 
-    protected int askTaskId() {
+    private int askTaskId() {
         System.out.print("ID da tarefa que será removida: ");
         return this.scanner.readInt();
     }

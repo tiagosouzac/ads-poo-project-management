@@ -41,9 +41,9 @@ public class TaskDAO {
         return this.database.query(sql, TaskMapper.map(), projectId, status.name());
     }
 
-    public Task find(int id) {
-        String sql = "SELECT * FROM tasks WHERE id = ?;";
+    public Task find(int projectId, int taskId) {
+        String sql = "SELECT * FROM tasks WHERE project_id = ? AND id = ?;";
 
-        return this.database.query(sql, TaskMapper.map(), id).get(0);
+        return this.database.query(sql, TaskMapper.map(), projectId, taskId).get(0);
     }
 }
