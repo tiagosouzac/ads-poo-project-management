@@ -8,11 +8,7 @@ import br.edu.iftm.database.models.Member;
 import br.edu.iftm.database.models.Member.Role;
 
 public class MemberDAO {
-    private final Database database;
-
-    public MemberDAO() {
-        this.database = new Database();
-    }
+    private final Database database = new Database();
 
     public boolean store(String name, Role role) {
         String sql = "INSERT INTO members(name, role) values (?, ?)";
@@ -32,8 +28,8 @@ public class MemberDAO {
         return this.database.query(sql, name, role.name(), id);
     }
 
-    public boolean update(int id, Integer teamId){
-        if(teamId == null){
+    public boolean update(int id, Integer teamId) {
+        if (teamId == null) {
             String sql = "UPDATE members SET team_id = NULL WHERE id = ?;";
             return this.database.query(sql, id);
         } else {

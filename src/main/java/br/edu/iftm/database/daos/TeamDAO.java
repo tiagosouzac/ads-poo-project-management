@@ -7,11 +7,7 @@ import br.edu.iftm.database.mappers.TeamMapper;
 import br.edu.iftm.database.models.Team;
 
 public class TeamDAO {
-    private final Database database;
-
-    public TeamDAO() {
-        this.database = new Database();
-    }
+    private final Database database = new Database();
 
     public boolean store(String name) {
         String sql = "INSERT INTO teams(name) values (?)";

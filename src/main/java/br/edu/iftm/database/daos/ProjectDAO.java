@@ -9,11 +9,7 @@ import br.edu.iftm.database.models.Project;
 import br.edu.iftm.database.models.Project.Status;
 
 public class ProjectDAO {
-    private final Database database;
-
-    public ProjectDAO() {
-        this.database = new Database();
-    }
+    private final Database database = new Database();
 
     public boolean store(String name, String description, Date startAt, Date endAt) {
         String sql = "INSERT INTO projects(name, description, start_at, end_at) VALUES (?, ?, ?, ?)";

@@ -9,7 +9,7 @@ public class Task {
     private Date completionDate;
     private Status status;
 
-    enum Status {
+    public enum Status {
         PENDING,
         IN_PROGRESS,
         FINISHED
