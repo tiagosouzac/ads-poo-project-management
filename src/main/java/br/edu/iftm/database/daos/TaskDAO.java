@@ -29,16 +29,16 @@ public class TaskDAO {
         return this.database.query(sql, id);
     }
 
-    public List<Task> list() {
-        String sql = "SELECT * FROM tasks";
+    public List<Task> list(int projectId) {
+        String sql = "SELECT * FROM tasks WHERE project_id = ?";
 
-        return this.database.query(sql, TaskMapper.map());
+        return this.database.query(sql, TaskMapper.map(), projectId);
     }
 
-    public List<Task> list(Status status) {
-        String sql = "SELECT * FROM tasks WHERE status = ?;";
+    public List<Task> list(int projectId, Status status) {
+        String sql = "SELECT * FROM tasks WHERE project_id = ? AND status = ?;";
 
-        return this.database.query(sql, TaskMapper.map(), status.name());
+        return this.database.query(sql, TaskMapper.map(), projectId, status.name());
     }
 
     public Task find(int id) {
