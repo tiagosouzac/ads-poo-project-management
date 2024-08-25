@@ -23,6 +23,12 @@ public class TaskDAO {
         return this.database.query(sql, description, completionDate, status.name(), projectId, id);
     }
 
+    public boolean update(int projectId, int id, Status status) {
+        String sql = "UPDATE tasks SET status = ? WHERE project_id = ? AND id = ?;";
+
+        return this.database.query(sql, status.name(), projectId, id);
+    }
+
     public boolean delete(int projectId, int taskId) {
         String sql = "DELETE FROM tasks WHERE project_id = ? AND id = ?;";
 

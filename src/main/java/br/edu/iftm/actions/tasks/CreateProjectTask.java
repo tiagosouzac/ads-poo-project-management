@@ -34,7 +34,7 @@ public class CreateProjectTask {
         String description;
 
         do {
-            System.out.print("Descrição da tarefea: ");
+            System.out.print("Descrição da tarefa: ");
             description = this.scanner.read().trim();
 
             if (!Validator.project.isValidDescription(description)) {
@@ -51,6 +51,8 @@ public class CreateProjectTask {
         do {
             System.out.println("Data de entrega: ");
             completionDate = this.scanner.readDate();
+
+            // TODO: validar se a data está entre o início e o fim do projeto
         } while (completionDate == null);
 
         return completionDate;

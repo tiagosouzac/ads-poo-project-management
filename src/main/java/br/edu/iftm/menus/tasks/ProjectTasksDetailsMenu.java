@@ -2,6 +2,7 @@ package br.edu.iftm.menus.tasks;
 
 import br.edu.iftm.actions.tasks.DeleteProjectTask;
 import br.edu.iftm.actions.tasks.ProjectTaskDetails;
+import br.edu.iftm.actions.tasks.UpdateProjectTaskStatus;
 import br.edu.iftm.database.models.Project;
 import br.edu.iftm.database.models.Task;
 import br.edu.iftm.menus.Menu;
@@ -22,10 +23,9 @@ public class ProjectTasksDetailsMenu extends Menu {
             }
 
             System.out.println();
-            System.out.println("1. Marcar como \"pendente\"");
-            System.out.println("2. Marcar como \"em andamento\"");
-            System.out.println("3. Marcar como \"finalizada\"");
-            System.out.println("4. Excluir tarefa");
+            System.out.println("1. Mudar status da tarefa");
+            System.out.println("2. Ver os comentários da tarefa");
+            System.out.println("3. Excluir tarefa");
             System.out.println("0. Voltar para a listagem de tarefas");
 
             int selectedOption = this.scanner.readInt();
@@ -34,20 +34,16 @@ public class ProjectTasksDetailsMenu extends Menu {
 
             switch (selectedOption) {
                 case 1:
-
-                    break;
+                    new UpdateProjectTaskStatus(project, task).update();
+                    return;
 
                 case 2:
 
                     break;
 
                 case 3:
-
-                    break;
-
-                case 4:
                     new DeleteProjectTask(this.project, task).delete();
-                    return;
+                    break;
 
                 case 0:
                     return;
