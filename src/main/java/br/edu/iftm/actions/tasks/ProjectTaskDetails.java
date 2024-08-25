@@ -14,7 +14,7 @@ public class ProjectTaskDetails {
         this.project = project;
     }
 
-    public void show() {
+    public Task show() {
         try {
             int projectId = this.project.getId();
             int taskId = this.askTaskId();
@@ -22,8 +22,11 @@ public class ProjectTaskDetails {
             Task task = this.dao.find(projectId, taskId);
 
             this.displayProjectTaskInfo(task);
+
+            return task;
         } catch (Exception e) {
             System.out.println("Tarefa não encontrada!");
+            return null;
         }
     }
 
@@ -33,8 +36,7 @@ public class ProjectTaskDetails {
     }
 
     private void displayProjectTaskInfo(Task task) {
-        System.out.println(task.getDescription());
-        System.out.println("STATUS: " + task.getStatus());
+        System.out.println("[" + task.getStatus() + "] " + task.getDescription());
         System.out.println("Data de entrega: " + task.getCompletionDate());
     }
 }

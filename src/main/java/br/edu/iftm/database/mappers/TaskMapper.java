@@ -15,7 +15,7 @@ public class TaskMapper {
                 int id = task.getInt("id");
                 int projectId = task.getInt("project_id");
                 String description = task.getString("description");
-                Date completionDate = task.getDate("start_at");
+                Date completionDate = task.getDate("completion_date");
                 Status status = Status.valueOf(task.getString("status"));
 
                 return new Task(id, projectId, description, completionDate, status);

@@ -6,6 +6,7 @@ import br.edu.iftm.actions.projects.ProjectDetails;
 import br.edu.iftm.actions.projects.UpdateProject;
 import br.edu.iftm.database.models.Project;
 import br.edu.iftm.menus.Menu;
+import br.edu.iftm.menus.tasks.ProjectTasksMenu;
 
 public class ProjectDetailsMenu extends Menu {
     public void display() {
@@ -19,7 +20,8 @@ public class ProjectDetailsMenu extends Menu {
             System.out.println();
             System.out.println("1. Atualizar o projeto");
             System.out.println("2. Alterar equipe do projeto");
-            System.out.println("3. Excluir o projeto");
+            System.out.println("3. Ver as tarefas do projeto");
+            System.out.println("4. Excluir o projeto");
             System.out.println("0. Voltar para o menu de projetos");
 
             int selectedOption = this.scanner.readInt();
@@ -36,6 +38,10 @@ public class ProjectDetailsMenu extends Menu {
                     break;
 
                 case 3:
+                    new ProjectTasksMenu(project).display();
+                    return;
+
+                case 4:
                     new DeleteProject(project).delete();
                     return;
 

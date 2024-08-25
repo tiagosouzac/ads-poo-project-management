@@ -24,7 +24,7 @@ public class ListPendingProjectTasks {
                     System.out.println(task);
                 }
             } else {
-                System.out.println("Nenhum projeto cadastrado ainda!");
+                System.out.println("Nenhuma tarefa cadastrada ainda!");
             }
         } catch (Exception e) {
             System.out.println("Não foi possível listar as tarefas do projeto. Erro: " + e.getMessage());
