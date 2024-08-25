@@ -6,6 +6,7 @@ import br.edu.iftm.actions.tasks.UpdateProjectTaskStatus;
 import br.edu.iftm.database.models.Project;
 import br.edu.iftm.database.models.Task;
 import br.edu.iftm.menus.Menu;
+import br.edu.iftm.menus.comments.TasksCommentMenu;
 
 public class ProjectTasksDetailsMenu extends Menu {
     private final Project project;
@@ -38,7 +39,7 @@ public class ProjectTasksDetailsMenu extends Menu {
                     return;
 
                 case 2:
-
+                    new TasksCommentMenu(task).display();
                     break;
 
                 case 3:
