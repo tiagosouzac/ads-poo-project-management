@@ -23,7 +23,7 @@ public class UpdateProjectTask {
     public void update() {
         try {
             int projectId = this.project.getId();
-            int taskId = this.askTaskId();
+            int taskId = this.task.getId();
             String description = this.askProjectTaskDescription(this.task.getDescription());
             Date completionDate = this.askProjectTaskCompletionDate(this.task.getCompletionDate());
             Status status = this.askProjectTaskStatus(this.task.getStatus());
@@ -34,11 +34,6 @@ public class UpdateProjectTask {
         } catch (Exception e) {
             System.out.println("Não foi possível atualizar a tarefa. Erro: " + e.getMessage());
         }
-    }
-
-    private int askTaskId() {
-        System.out.print("ID da tarefa que será removida: ");
-        return this.scanner.readInt();
     }
 
     private String askProjectTaskDescription(String currentDescription) {
