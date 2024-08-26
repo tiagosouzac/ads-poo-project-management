@@ -155,7 +155,7 @@ public class UpdateProject {
             System.out.println("Nova data de finalização: ");
             endAt = this.scanner.readDate();
 
-            if (endAt.before(starAt)) {
+            if (Validator.project.isValidEndDate(endAt, starAt)) {
                 System.out.println("A finalização deve ser posterior ao início do projeto!");
                 endAt = null;
             }

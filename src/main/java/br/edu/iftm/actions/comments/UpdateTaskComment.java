@@ -44,10 +44,10 @@ public class UpdateTaskComment {
                 break;
             }
 
-            if (!Validator.project.isValidDescription(text)) {
+            if (!Validator.comment.isValidComment(text)) {
                 System.out.println("O comentário deve ter no máximo 255 caracteres!");
             }
-        } while (!Validator.project.isValidDescription(text));
+        } while (!Validator.comment.isValidComment(text));
 
         return text;
     }

@@ -37,22 +37,28 @@ public class CreateProjectTask {
             System.out.print("Descrição da tarefa: ");
             description = this.scanner.read().trim();
 
-            if (!Validator.project.isValidDescription(description)) {
+            if (!Validator.task.isValidDescription(description)) {
                 System.out.println("A descrição deve ter no máximo 255 caracteres!");
             }
-        } while (!Validator.project.isValidDescription(description));
+        } while (!Validator.task.isValidDescription(description));
 
         return description;
     }
 
     private Date askTaskCompletionDate() {
         Date completionDate = null;
+        Date projectStartAt = this.project.getStartAt();
+        Date projectEndAt = this.project.getEndAt();
 
         do {
             System.out.println("Data de entrega: ");
             completionDate = this.scanner.readDate();
 
-            // TODO: validar se a data está entre o início e o fim do projeto
+            if (!Validator.task.isValidCompletionDate(completionDate, projectStartAt, projectEndAt)) {
+                System.out.println("Data está fora do prazo do projeto! O projeto inicia em: " + projectStartAt
+                        + " e finaliza em " + projectEndAt);
+                completionDate = null;
+            }
         } while (completionDate == null);
 
         return completionDate;

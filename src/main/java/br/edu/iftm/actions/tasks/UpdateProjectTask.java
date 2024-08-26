@@ -54,10 +54,10 @@ public class UpdateProjectTask {
                 break;
             }
 
-            if (!Validator.project.isValidDescription(description)) {
+            if (!Validator.task.isValidDescription(description)) {
                 System.out.println("A descrição deve ter no máximo 255 caracteres!");
             }
-        } while (!Validator.project.isValidDescription(description));
+        } while (!Validator.task.isValidDescription(description));
 
         return description;
     }
@@ -104,8 +104,6 @@ public class UpdateProjectTask {
     }
 
     private Date askProjectTaskCompletionDate(Date currentStartDate) {
-        Date completionDate = null;
-
         System.out.println("Data de entrega: " + currentStartDate);
         System.out.println("Deseja alterar essa data? (s/n)");
 
@@ -115,9 +113,19 @@ public class UpdateProjectTask {
             return currentStartDate;
         }
 
+        Date completionDate = null;
+        Date projectStartAt = this.project.getStartAt();
+        Date projectEndAt = this.project.getEndAt();
+
         do {
             System.out.println("Nova data de entrega: ");
             completionDate = this.scanner.readDate();
+
+            if (!Validator.task.isValidCompletionDate(completionDate, projectStartAt, projectEndAt)) {
+                System.out.println("Data está fora do prazo do projeto! O projeto inicia em: " + projectStartAt
+                        + " e finaliza em " + projectEndAt);
+                completionDate = null;
+            }
         } while (completionDate == null);
 
         return completionDate;

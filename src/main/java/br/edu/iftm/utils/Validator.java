@@ -1,5 +1,7 @@
 package br.edu.iftm.utils;
 
+import java.util.Date;
+
 public class Validator {
     public static class string {
         public static boolean isEmpty(String value) {
@@ -19,6 +21,16 @@ public class Validator {
         }
     }
 
+    public static class date {
+        public static boolean isOnOrBefore(Date date, Date endDate) {
+            return date.compareTo(endDate) <= 0;
+        }
+
+        public static boolean isOnOrAfter(Date date, Date startDate) {
+            return date.compareTo(startDate) >= 0;
+        }
+    }
+
     public static class project {
         public static boolean isValidName(String name) {
             return Validator.string.isValid(name, 1, 255);
@@ -26,6 +38,10 @@ public class Validator {
 
         public static boolean isValidDescription(String description) {
             return Validator.string.maxLength(description, 255);
+        }
+
+        public static boolean isValidEndDate(Date endAt, Date startAt) {
+            return endAt.after(startAt);
         }
     }
 
@@ -37,6 +53,23 @@ public class Validator {
 
     public static class member {
         public static boolean isValidName(String name) {
+            return Validator.string.isValid(name, 1, 255);
+        }
+    }
+
+    public static class task {
+        public static boolean isValidDescription(String name) {
+            return Validator.string.isValid(name, 1, 255);
+        }
+
+        public static boolean isValidCompletionDate(Date completionDate, Date projectStartAt, Date projectEndAt) {
+            return Validator.date.isOnOrAfter(completionDate, projectStartAt)
+                    && Validator.date.isOnOrBefore(completionDate, projectEndAt);
+        }
+    }
+
+    public static class comment {
+        public static boolean isValidComment(String name) {
             return Validator.string.isValid(name, 1, 255);
         }
     }
