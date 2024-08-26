@@ -9,15 +9,18 @@ import br.edu.iftm.menus.Menu;
 import br.edu.iftm.menus.tasks.ProjectTasksMenu;
 
 public class ProjectDetailsMenu extends Menu {
+    private Project project;
+
     public void display() {
         while (true) {
-            Project project = new ProjectDetails().show();
+            this.findProject();
 
-            if (project == null) {
+            if (this.project == null) {
                 break;
             }
 
-            System.out.println();
+            this.displayProjectDetails();
+
             System.out.println("1. Atualizar o projeto");
             System.out.println("2. Alterar equipe do projeto");
             System.out.println("3. Ver as tarefas do projeto");
@@ -55,5 +58,31 @@ public class ProjectDetailsMenu extends Menu {
 
             System.out.println();
         }
+    }
+
+    private void findProject() {
+        int projectId = this.project == null ? this.askProjectId() : this.project.getId();
+        this.project = new ProjectDetails().find(projectId);
+    }
+
+    private int askProjectId() {
+        System.out.print("ID do projeto: ");
+        return this.scanner.readInt();
+    }
+
+    private void displayProjectDetails() {
+        System.out.println("Nome: " + this.project.getName());
+        System.out.println("Descrição: " + this.project.getDescription());
+        System.out.println("Status: " + this.project.getStatus());
+
+        if (this.project.getStartAt() != null) {
+            System.out.println("Iniciado em: " + this.project.getStartAt());
+        }
+
+        if (this.project.getEndAt() != null) {
+            System.out.println("Finalizado em: " + this.project.getEndAt());
+        }
+
+        System.out.println();
     }
 }

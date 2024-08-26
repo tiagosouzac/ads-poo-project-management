@@ -9,13 +9,17 @@ import br.edu.iftm.database.models.Team;
 import br.edu.iftm.menus.Menu;
 
 public class TeamDetailsMenu extends Menu {
+    private Team team = null;
+
     public void display() {
         while (true) {
-            Team team = new TeamDetails().show();
+            this.findTeam();
 
-            if (team == null) {
+            if (this.team == null) {
                 break;
             }
+
+            this.displayTeamInfo();
 
             System.out.println("1. Atualizar informações da equipe");
             System.out.println("2. Adicionar integrante na equipe");
@@ -54,5 +58,20 @@ public class TeamDetailsMenu extends Menu {
 
             System.out.println();
         }
+    }
+
+    private void findTeam() {
+        int teamId = this.team == null ? this.askTeamId() : this.team.getId();
+        this.team = new TeamDetails().find(teamId);
+    }
+
+    private int askTeamId() {
+        System.out.print("ID da equipe: ");
+        return this.scanner.readInt();
+    }
+
+    private void displayTeamInfo() {
+        System.out.println("Nome: " + team.getName());
+        System.out.println();
     }
 }

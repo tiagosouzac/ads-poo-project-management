@@ -9,6 +9,7 @@ import br.edu.iftm.menus.Menu;
 
 public class TasksCommentDetailsMenu extends Menu {
     private final Task task;
+    private Comment comment;
 
     public TasksCommentDetailsMenu(Task task) {
         this.task = task;
@@ -16,13 +17,14 @@ public class TasksCommentDetailsMenu extends Menu {
 
     public void display() {
         while (true) {
-            Comment comment = new TaskCommentDetails(task).show();
+            this.findTaskComment();
 
-            if (comment == null) {
-                return;
+            if (this.comment == null) {
+                break;
             }
 
-            System.out.println();
+            this.displayCommentTaskInfo();
+
             System.out.println("1. Atualizar o comentário");
             System.out.println("2. Excluir o comentário");
             System.out.println("0. Voltar para a listagem de comentários");
@@ -48,5 +50,20 @@ public class TasksCommentDetailsMenu extends Menu {
                     break;
             }
         }
+    }
+
+    private void findTaskComment() {
+        int commentId = this.comment == null ? this.askCommentId() : this.task.getId();
+        this.comment = new TaskCommentDetails(this.task).find(commentId);
+    }
+
+    private int askCommentId() {
+        System.out.print("ID do comentário: ");
+        return this.scanner.readInt();
+    }
+
+    private void displayCommentTaskInfo() {
+        System.out.println(comment.getText());
+        System.out.println();
     }
 }
