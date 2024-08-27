@@ -77,16 +77,13 @@ public class UpdateProject {
     }
 
     private Status askProjectStatus(Status currentStatus) {
-        Status status = null;
-
         System.out.println("Status do projeto: " + currentStatus);
-        System.out.println("Deseja alterar esse status? (s/n)");
 
-        char changeStatus = this.scanner.readChar();
-
-        if (changeStatus == 'n') {
+        if (!this.scanner.confirm("Deseja alterar esse status?")) {
             return currentStatus;
         }
+
+        Status status = null;
 
         System.out.println("1. " + Status.PENDING);
         System.out.println("2. " + Status.IN_PROGRESS);
@@ -118,16 +115,13 @@ public class UpdateProject {
     }
 
     private Date askProjectStartDate(Date currentStartDate) {
-        Date startAt = null;
-
         System.out.println("Data de início: " + currentStartDate);
-        System.out.println("Deseja alterar essa data? (s/n)");
 
-        char changeStatus = this.scanner.readChar();
-
-        if (changeStatus == 'n') {
+        if (!this.scanner.confirm("Deseja alterar essa data?")) {
             return currentStartDate;
         }
+
+        Date startAt = null;
 
         do {
             System.out.println("Nova data de início: ");
@@ -142,11 +136,8 @@ public class UpdateProject {
 
         if (currentEndDate.after(starAt)) {
             System.out.println("Data de finalização: " + currentEndDate);
-            System.out.println("Deseja alterar essa data? (s/n)");
 
-            char changeStatus = this.scanner.readChar();
-
-            if (changeStatus == 'n') {
+            if (!this.scanner.confirm("Deseja alterar essa data?")) {
                 return currentEndDate;
             }
         }

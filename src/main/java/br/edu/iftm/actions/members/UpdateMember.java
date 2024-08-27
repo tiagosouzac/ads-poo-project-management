@@ -51,16 +51,13 @@ public class UpdateMember {
     }
 
     protected Role askMemberRole(Role currentRole) {
-        Role role = null;
-
         System.out.println("Cargo atual: " + currentRole);
-        System.out.println("Deseja alterar? (s/n)");
 
-        char changeRole = this.scanner.readChar();
-
-        if (changeRole == 'n') {
+        if (!this.scanner.confirm("Deseja alterar?")) {
             return currentRole;
         }
+
+        Role role = null;
 
         System.out.println("1. " + Role.DEVELOPER);
         System.out.println("2. " + Role.DESIGNER);

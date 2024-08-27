@@ -27,11 +27,7 @@ public class UpdateMemberTeam {
     }
 
     protected int askTeamId(int currentTeamId) {
-        System.out.println("Realmente deseja alterar? (s/n)");
-
-        char changeTeamId = this.scanner.readChar();
-
-        if (changeTeamId == 'n') {
+        if (!this.scanner.confirm("Realmente deseja alterar?")) {
             return currentTeamId;
         }
 

@@ -49,4 +49,21 @@ public class Scanner {
             return this.readDate();
         }
     }
+
+    public boolean confirm(String message) {
+        System.out.println(message + " (s/n)");
+
+        char confirmation;
+
+        do {
+            confirmation = this.readChar();
+
+            if (confirmation != 's' && confirmation != 'n') {
+                System.out.println("Opção inválida!");
+                confirmation = 'a';
+            }
+        } while (confirmation != 's' && confirmation != 'n');
+
+        return confirmation == 's';
+    }
 }

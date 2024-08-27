@@ -25,5 +25,4 @@ public class CreateTeamMember extends CreateMember {
             System.out.println("Não foi possível criar o membro da equipe. Erro: " + e.getMessage());
         }
     }
-
 }

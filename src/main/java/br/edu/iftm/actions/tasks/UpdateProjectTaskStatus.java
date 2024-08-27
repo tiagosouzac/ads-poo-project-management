@@ -32,16 +32,13 @@ public class UpdateProjectTaskStatus {
     }
 
     private Status askProjectTaskStatus(Status currentStatus) {
-        Status status = null;
-
         System.out.println("Status da tarefa: " + currentStatus);
-        System.out.println("Deseja alterar esse status? (s/n)");
 
-        char changeStatus = this.scanner.readChar();
-
-        if (changeStatus == 'n') {
+        if (!this.scanner.confirm("Deseja alterar esse status?")) {
             return currentStatus;
         }
+
+        Status status = null;
 
         System.out.println("1. " + Status.PENDING);
         System.out.println("2. " + Status.IN_PROGRESS);
