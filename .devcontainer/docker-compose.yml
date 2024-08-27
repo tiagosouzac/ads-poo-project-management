@@ -10,10 +10,10 @@ services:
     image: mysql
     restart: always
     environment:
-      MYSQL_DATABASE: database
-      MYSQL_USER: user
-      MYSQL_PASSWORD: password
-      MYSQL_RANDOM_ROOT_PASSWORD: "1"
+      MYSQL_DATABASE: project_management
+      # MYSQL_USER: user
+      # MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: root
     volumes:
       - db:/var/lib/mysql
 
